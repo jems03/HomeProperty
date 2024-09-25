@@ -3,6 +3,8 @@ using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
+using HomeProperty.Business;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HomeProperty
 {
@@ -29,6 +31,8 @@ namespace HomeProperty
                 .AddCms()
                 .AddAdminUserRegistration()
                 .AddEmbeddedLocalization<Startup>();
+
+            services.Configure<MvcOptions>(options => options.Filters.Add<PageContextActionFilter>());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,4 +1,6 @@
-﻿<!-- Start header section -->
+﻿@model IPageViewModel<SitePageData>
+
+<!-- Start header section -->
 <header id="aa-header">
     <div class="container">
         <div class="row">
@@ -29,6 +31,7 @@
     </div>
 </header>
 <!-- End header section -->
+
 <!-- Start menu section -->
 <section id="aa-menu-area">
     <nav class="navbar navbar-default main-navbar" role="navigation">
@@ -41,11 +44,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
                 <!-- LOGO -->
                 <!-- Text based logo -->
-                <a class="navbar-brand aa-logo" href="index.html"> Home <span>Property</span></a>
+                @* <a class="navbar-brand aa-logo" href="index.html"> Home <span>Property</span></a> *@
                 <!-- Image based logo -->
                 <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
+                <a class="navbar-brand aa-logo-img" href="index.html"><img src="@Url.ContentUrl(Model.Layout.LogoUrl)" alt="logo"></a>
+            
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
