@@ -4,6 +4,7 @@ using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using HomeProperty.Business;
+using HomeProperty.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeProperty
@@ -29,10 +30,9 @@ namespace HomeProperty
             services
                 .AddCmsAspNetIdentity<ApplicationUser>()
                 .AddCms()
+                .AddHomeProperty()
                 .AddAdminUserRegistration()
-                .AddEmbeddedLocalization<Startup>();
-
-            services.Configure<MvcOptions>(options => options.Filters.Add<PageContextActionFilter>());
+                .AddEmbeddedLocalization<Startup>();           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
