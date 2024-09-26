@@ -1,6 +1,15 @@
 ﻿@model SectionTitleBlock
 
-<section id="aa-gallery">
+@{
+    var bg = "";
+
+    if (Model.GrayBackground )
+    {
+        bg = "gray-bg";
+    }
+}
+
+<section id="aa-gallery" class="@bg">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

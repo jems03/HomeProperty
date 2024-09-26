@@ -720,6 +720,9 @@ img {
 /*==================
  LATEST PROPERTY SECTION
 ====================*/
+.gray-bg {
+    background-color: #f8f8f8;
+}
 
 #aa-latest-property {
   background-color: #f8f8f8;
