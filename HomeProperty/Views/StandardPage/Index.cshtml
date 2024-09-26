@@ -1,5 +1,20 @@
 ﻿@model PageViewModel<StandardPage>
 
-<section style="padding-top:200px" @Html.EditAttributes(m => m.CurrentPage.MetaTitle)>
-    <h1>@Model.CurrentPage.MetaTitle</h1>
+<!-- Start Property header  -->
+
+<section id="aa-property-header" style="background-image:url(`@Url.ContentUrl(Model.CurrentPage.MainSectionImageUrl)`)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-property-header-inner">
+                    <h2>@Model.CurrentPage.MetaTitle</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="#">HOME</a></li>
+                        <li class="active">Gallery</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+<!-- End Property header  -->
