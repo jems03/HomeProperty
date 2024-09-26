@@ -1,12 +1,10 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
 {
-    [ContentType(DisplayName = "SectionTitleBlock", GUID = "cec799ef-01e8-462f-9b29-9aa9ad183346", Description = "")]
+    [ContentType(DisplayName = "Section Title Block", 
+        GUID = "cec799ef-01e8-462f-9b29-9aa9ad183346", 
+        Description = "")]
     public class SectionTitleBlock : BlockData
     {
         [Display(
@@ -18,7 +16,7 @@ namespace HomeProperty.Models.Blocks
         [Display(
             Name = "Section Description",
             GroupName = SystemTabNames.Content,
-            Order = 10)]
+            Order = 20)]
         public virtual XhtmlString? SectionDescription { get; set; }
     }
 }

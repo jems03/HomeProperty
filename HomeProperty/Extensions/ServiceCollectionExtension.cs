@@ -1,8 +1,7 @@
-﻿using HomeProperty.Business.Rendering;
-using HomeProperty.Business;
-using Microsoft.AspNetCore.Mvc.Razor;
+﻿using HomeProperty.Business;
+using HomeProperty.Business.Rendering;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace HomeProperty.Extensions
 {
