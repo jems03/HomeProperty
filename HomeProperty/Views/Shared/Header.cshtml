@@ -54,7 +54,7 @@
             
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
+                @* <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
                     <li class="active"><a href="index.html">HOME</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">PROPERTIES <span class="caret"></span></a>
@@ -73,8 +73,19 @@
                     </li>
                     <li><a href="contact.html">CONTACT</a></li>
                     <li><a href="404.html">404 PAGE</a></li>
+                </ul> *@
+
+                <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
+                @foreach(var menuItem in Model.Layout.MenuItems)
+                {
+                    if(Model.Layout.MenuItems?.Count > 0)
+                    {
+                            <li><a href="@Url.ContentUrl(menuItem.Href)" target="@menuItem.Target">@menuItem.Text</a></li>
+                    }
+                }
                 </ul>
-            </div><!--/.nav-collapse -->
+            </div>
+            <!--/.nav-collapse -->
         </div>
     </nav>
 </section>

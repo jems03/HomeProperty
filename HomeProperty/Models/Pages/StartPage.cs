@@ -1,4 +1,5 @@
-﻿using EPiServer.Web;
+﻿using EPiServer.SpecializedProperties;
+using EPiServer.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Pages
@@ -20,6 +21,13 @@ namespace HomeProperty.Models.Pages
            Order = 10)]
         [UIHint(UIHint.Image)]
         
-        public virtual Url LogoUrl { get; set; }
+        public virtual Url? LogoUrl { get; set; }
+
+        [CultureSpecific]
+        [Display(
+           GroupName = Globals.GroupNames.Layout,
+           Order = 20)]
+        [Required]
+        public virtual LinkItemCollection? Navigation { get; set; }
     }
 }

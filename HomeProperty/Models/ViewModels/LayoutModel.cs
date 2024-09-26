@@ -1,4 +1,5 @@
-﻿using HomeProperty.Models.Pages;
+﻿using EPiServer.SpecializedProperties;
+using HomeProperty.Models.Pages;
 
 namespace HomeProperty.Models.ViewModels
 {
@@ -6,6 +7,7 @@ namespace HomeProperty.Models.ViewModels
     {
         public Url? LogoUrl { get; set; }
 
-        public IList<SitePageData> MenuItems { get; set; }
+        //public IList<SitePageData> MenuItems { get; set; }
+        public LinkItemCollection MenuItems { get; set; }
     }
 }
