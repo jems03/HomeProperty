@@ -1,8 +1,7 @@
 ﻿@model PageViewModel<StandardPage>
 
 <!-- Start Property header  -->
-
-<section id="aa-property-header" style="background-image:url(`@Url.ContentUrl(Model.CurrentPage.MainSectionImageUrl)`)">
+<section id="aa-property-header" style="background-image:url(@Url.ContentUrl(Model.CurrentPage.MainSectionImageUrl))">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -18,3 +17,5 @@
     </div>
 </section>
 <!-- End Property header  -->
+
+@Html.PropertyFor(m => m.CurrentPage.Sections)

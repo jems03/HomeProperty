@@ -16,7 +16,14 @@ namespace HomeProperty.Models.Pages
             Name = "SEO",
             Description = "This will be used for SEO Optimization",
             GroupName = SystemTabNames.Content,
-            Order = 1)]
+            Order = 10)]
         public virtual string? MetaTitle { get; set; }
+
+        [CultureSpecific]
+        [Display(
+           Name = "Sections",
+           Description = "Add website sections",
+           Order = 20)]
+        public virtual ContentArea? Sections { get; set; }
     }
 }
