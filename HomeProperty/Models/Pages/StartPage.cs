@@ -23,11 +23,11 @@ namespace HomeProperty.Models.Pages
         
         public virtual Url? LogoUrl { get; set; }
 
-        [CultureSpecific]
-        [Display(
-           GroupName = Globals.GroupNames.Layout,
-           Order = 20)]
-        [Required]
-        public virtual LinkItemCollection? Navigation { get; set; }
+        //[CultureSpecific]
+        //[Display(
+        //   GroupName = Globals.GroupNames.Layout,
+        //   Order = 20)]
+        //[Required]
+        //public virtual LinkItemCollection? Navigation { get; set; }
     }
 }

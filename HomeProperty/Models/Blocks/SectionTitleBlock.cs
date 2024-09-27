@@ -18,10 +18,5 @@ namespace HomeProperty.Models.Blocks
             GroupName = SystemTabNames.Content,
             Order = 20)]
         public virtual XhtmlString? SectionDescription { get; set; }
-
-        [Display(
-            GroupName = SystemTabNames.Content,
-            Order = 20)]
-        public virtual bool GrayBackground  { get; set; }
     }
 }
