@@ -10,9 +10,12 @@ namespace HomeProperty.Business
     {
         private readonly PageViewContextFactory _contextFactory;
 
-        public PageContextActionFilter(PageViewContextFactory contextFactory)
+        private readonly IHttpContextAccessor _contextAccessor;
+
+        public PageContextActionFilter(PageViewContextFactory contextFactory, IHttpContextAccessor contextAccessor)
         {
             _contextFactory = contextFactory;
+            _contextAccessor = contextAccessor;
         }
 
         public void OnResultExecuting(ResultExecutingContext context)
@@ -23,6 +26,8 @@ namespace HomeProperty.Business
             if (viewModel is IPageViewModel<SitePageData> model)
             {
                 var currentContentLink = context.HttpContext.GetContentLink();
+
+                var currentContext = _contextAccessor.HttpContext;
 
                 var layoutModel = model.Layout ?? _contextFactory.CreateLayoutModel(currentContentLink, context.HttpContext);
 
