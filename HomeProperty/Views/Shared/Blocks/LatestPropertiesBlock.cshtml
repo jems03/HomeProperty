@@ -1,4 +1,5 @@
 ﻿@using HomeProperty.Models.Blocks
+@using HomeProperty.Utilities
 @model LatestPropertiesBlock
 
 @if(Model != null && Model.LatestPropertiesItems != null)
@@ -18,6 +19,7 @@
                                         <img src="@Url.ContentUrl(latestPropertyItem.LatestPropertyImage)" alt="img">
                                     </a>
                                     <div class="aa-tag @latestPropertyItem.LatestPropertyStatus">
+                                    @PropertyStatusHelper.GetPropertyStatusText(latestPropertyItem.LatestPropertyStatus)
                                     </div>
                                     <div class="aa-properties-item-content">
                                         <div class="aa-properties-info">
@@ -28,7 +30,7 @@
                                         </div>
                                         <div class="aa-properties-about">
                                             <h3><a href="#">@latestPropertyItem.LatestPropertyName</a></h3>
-                                            <p>@latestPropertyItem.LatestPropertyDescription</p>
+                                        <p>@Html.Raw(latestPropertyItem.LatestPropertyDescription)</p>
                                         </div>
                                         <div class="aa-properties-detial">
                                             <span class="aa-price">
