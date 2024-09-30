@@ -7,7 +7,6 @@ namespace HomeProperty.Models.Blocks
         Description = "")]
     public class PropertiesCarouselBlock : BlockData
     {
-
         [CultureSpecific]
         [Display(
             Name = "Prperties Carousel Block",
