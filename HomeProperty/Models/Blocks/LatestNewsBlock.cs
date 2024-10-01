@@ -13,7 +13,6 @@ namespace HomeProperty.Models.Blocks
              Description = "Provide the Latest News",
              GroupName = SystemTabNames.Content,
              Order = 1)]
-        [AllowedTypes(typeof(LatestNewsBlockItem))]
-        public virtual ContentArea? LatestNewsItems { get; set; }
+        public virtual IList<LatestNewsBlockItem>? LatestNewsItems { get; set; }
     }
 }

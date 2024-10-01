@@ -1,5 +1,4 @@
-﻿@using HomeProperty.Models.Blocks
-@model LatestNewsBlock
+﻿@model LatestNewsBlock
 
 
 @if (Model != null && Model.LatestNewsItems != null)
@@ -11,30 +10,27 @@
                 <div class="aa-latest-blog-area">
                     <div class="aa-latest-blog-content">
                         <div class="row">
-                            @foreach (var items in Model.LatestNewsItems.FilteredItems)
+                            @foreach (var latestNews in Model.LatestNewsItems)
                             {
-                                @if (items.LoadContent() is LatestNewsBlockItem latestNews)
-                                {
-                                    <!-- start single blog -->
-                                    <div class="col-md-4">
-                                        <article class="aa-blog-single">
-                                            <figure class="aa-blog-img">
-                                                <a href="#"><img src="@Url.ContentUrl(latestNews.LatestNewsImage)" alt="img"></a>
-                                                <span class="aa-date-tag">@latestNews.LatestNewsDate.Value.ToString("dd MMMM, yy")</span>
-                                            </figure>
-                                            <div class="aa-blog-single-content">
-                                                <h3><a href="#">@latestNews.LatestNewsTitle</a></h3>
-                                                <p>@latestNews.LatestNewsDescription</p>
-                                                <div class="aa-blog-single-bottom">
-                                                    <a href="#" class="aa-blog-author"><i class="fa fa-user"></i> Admin</a>
-                                                    <a href="#" class="aa-blog-comments"><i class="fa fa-comment-o"></i>6</a>
-                                                </div>
+                                <!-- start single blog -->
+                                <div class="col-md-4">
+                                    <article class="aa-blog-single">
+                                        <figure class="aa-blog-img">
+                                            <a href="#"><img src="@Url.ContentUrl(latestNews.LatestNewsImage)" alt="img"></a>
+                                            <span class="aa-date-tag">@latestNews.LatestNewsDate.Value.ToString("dd MMMM, yy")</span>
+                                        </figure>
+                                        <div class="aa-blog-single-content">
+                                            <h3><a href="#">@latestNews.LatestNewsTitle</a></h3>
+                                            <p>@latestNews.LatestNewsDescription</p>
+                                            <div class="aa-blog-single-bottom">
+                                                <a href="#" class="aa-blog-author"><i class="fa fa-user"></i> Admin</a>
+                                                <a href="#" class="aa-blog-comments"><i class="fa fa-comment-o"></i>6</a>
                                             </div>
+                                        </div>
 
-                                        </article>
-                                    </div>
-                                    <!-- start single blog -->
-                                }
+                                    </article>
+                                </div>
+                                <!-- start single blog -->
                             }
                         </div>
                     </div>

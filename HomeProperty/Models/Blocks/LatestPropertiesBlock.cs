@@ -13,11 +13,10 @@ namespace HomeProperty.Models.Blocks
     {
         [CultureSpecific]
         [Display(
-             Name = "Properties Carousel Block",
+             Name = "Latest Properties Block",
              Description = "Provided properties that will be displayed",
              GroupName = SystemTabNames.Content,
              Order = 1)]
-        [AllowedTypes(typeof(LatestPropertiesBlockItem))]
-        public virtual ContentArea? LatestPropertiesItems { get; set; }
+        public virtual IList<LatestPropertiesBlockItem>? LatestPropertiesItems { get; set; }
     }
 }

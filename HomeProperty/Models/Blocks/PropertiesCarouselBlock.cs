@@ -9,12 +9,11 @@ namespace HomeProperty.Models.Blocks
     {
         [CultureSpecific]
         [Display(
-            Name = "Prperties Carousel Block",
+            Name = "Proerties Carousel Block",
             Description = "Provide properties that will be displayed",
             GroupName = SystemTabNames.Content,
             Order = 1)]
-        [AllowedTypes(typeof(PropertiesCarouselBlockItem))]
-        public virtual ContentArea? PropertyItems { get; set; }
+        public virtual IList<PropertiesCarouselBlockItem> PropertyItems { get; set; }
 
     }
 }

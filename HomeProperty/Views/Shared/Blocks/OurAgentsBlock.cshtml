@@ -1,51 +1,47 @@
-﻿@using HomeProperty.Models.Blocks
-@model OurAgentsBlock
+﻿@model OurAgentsBlock
 
-@if(Model != null && Model.OurAgentsPeople != null)
+@if (Model != null && Model.OurAgentsPeople != null)
 {
     <section id="aa-agents">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="aa-agents-area">                     
+                    <div class="aa-agents-area">
                         <!-- agents content -->
                         <div class="aa-agents-content">
                             <ul class="aa-agents-slider">
-                                @foreach (var items in Model.OurAgentsPeople.FilteredItems)
+                                @foreach (var ourAgents in Model.OurAgentsPeople)
                                 {
-                                    @if (items.LoadContent() is OurAgentsBlockItem ourAgents)
-                                    {
-                                        <li>
-                                            <div class="aa-single-agents">
-                                                <div class="aa-agents-img">
-                                                    <img src="@Url.ContentUrl(ourAgents.AgentImage)" alt="agent member image">
-                                                </div>
-                                                <div class="aa-agetns-info">
-                                                    <h4><a href="#">@ourAgents.AgentName</a></h4>
-                                                    <span>@ourAgents.AgentPosition</span>
-                                                    <div class="aa-agent-social">
-                                                        @if (ourAgents.AgentFacebookLink != null)
-                                                        {
-                                                            <a href="@ourAgents.AgentFacebookLink"><i class="fa fa-facebook"></i></a>
-                                                        }
-                                                        @if (ourAgents.AgentTwitterLink != null)
-                                                        {
-                                                            <a href="@ourAgents.AgentTwitterLink"><i class="fa fa-twitter"></i></a>
-                                                        }
-                                                        @if (ourAgents.AgentLinkedInLink != null)
-                                                        {
-                                                            <a href="@ourAgents.AgentLinkedInLink"><i class="fa fa-linkedin"></i></a>
-                                                        }
-                                                        @if (ourAgents.AgentGooglePlusLink != null)
-                                                        {
-                                                            <a href="@ourAgents.AgentGooglePlusLink"><i class="fa fa-google-plus"></i></a>
-                                                        }
-                                                    </div>
+                                    <li>
+                                        <div class="aa-single-agents">
+                                            <div class="aa-agents-img">
+                                                <img src="@Url.ContentUrl(ourAgents.AgentImage)" alt="agent member image">
+                                            </div>
+                                            <div class="aa-agetns-info">
+                                                <h4><a href="#">@ourAgents.AgentName</a></h4>
+                                                <span>@ourAgents.AgentPosition</span>
+                                                <div class="aa-agent-social">
+                                                    @if (ourAgents.AgentFacebookLink != null)
+                                                    {
+                                                        <a href="@ourAgents.AgentFacebookLink"><i class="fa fa-facebook"></i></a>
+                                                    }
+                                                    @if (ourAgents.AgentTwitterLink != null)
+                                                    {
+                                                        <a href="@ourAgents.AgentTwitterLink"><i class="fa fa-twitter"></i></a>
+                                                    }
+                                                    @if (ourAgents.AgentLinkedInLink != null)
+                                                    {
+                                                        <a href="@ourAgents.AgentLinkedInLink"><i class="fa fa-linkedin"></i></a>
+                                                    }
+                                                    @if (ourAgents.AgentGooglePlusLink != null)
+                                                    {
+                                                        <a href="@ourAgents.AgentGooglePlusLink"><i class="fa fa-google-plus"></i></a>
+                                                    }
                                                 </div>
                                             </div>
-                                        </li>
-                                    }
-                                }                              
+                                        </div>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -58,4 +54,3 @@ else
 {
     // Do not render
 }
-

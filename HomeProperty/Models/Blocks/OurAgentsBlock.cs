@@ -13,7 +13,6 @@ namespace HomeProperty.Models.Blocks
             Description = "Provide our agent's information that will be displayed",
             GroupName = SystemTabNames.Content,
             Order = 1)]
-        [AllowedTypes(typeof(OurAgentsBlockItem))]
-        public virtual ContentArea? OurAgentsPeople { get; set; }
+        public virtual IList<OurAgentsBlockItem>? OurAgentsPeople { get; set; }
     }
 }
