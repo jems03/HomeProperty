@@ -39,11 +39,5 @@ namespace HomeProperty.Models.Blocks
         [UIHint(UIHint.Image)]
 
         public virtual Url? AboutImage { get; set; }
-
-        [Display(
-            Name = "Gray Background",
-            GroupName = SystemTabNames.Content,
-            Order = 50)]
-        public virtual bool GrayBackground { get; set; }
     }
 }
