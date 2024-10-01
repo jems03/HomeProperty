@@ -1375,6 +1375,12 @@ img {
                     transition: all 0.5s;
                 }
 
+                #aa-client-brand .aa-client-brand-area .aa-client-brand-slider li .aa-client-single-brand img {                  
+                    width: 150px;
+                    height: 60px;
+                    object-fit: contain;
+                }
+
                     #aa-client-brand .aa-client-brand-area .aa-client-brand-slider li .aa-client-single-brand:hover {
                         opacity: 1;
                     }
