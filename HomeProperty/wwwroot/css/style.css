@@ -935,7 +935,8 @@ img {
     display: inline;
     float: left;
     width: 100%;
-    padding: 100px 0;
+    /*padding: 100px 0;*/
+    
 }
 
     #aa-service .aa-service-area {
