@@ -796,6 +796,7 @@ img {
     float: left;
     width: 100%;
     padding: 100px 0;
+    margin-top: 1px;
 }
 
     #aa-section-title .aa-section-title-area {
@@ -1078,7 +1079,8 @@ img {
     display: inline;
     float: left;
     width: 100%;
-    padding: 100px 0;
+    /*padding: 100px 0;*/
+    
 }
 
     #aa-agents .aa-agents-area {
@@ -1091,7 +1093,7 @@ img {
             display: inline;
             float: left;
             width: 100%;
-            margin-top: 50px;
+            /*margin-top: 50px;*/
         }
 
             #aa-agents .aa-agents-area .aa-agents-content .aa-agents-slider {

@@ -13,8 +13,8 @@ namespace HomeProperty.Models.Blocks
     {
         [CultureSpecific]
         [Display(
-             Name = "Prperties Carousel Block",
-             Description = "Provide properties that will be displayed",
+             Name = "Properties Carousel Block",
+             Description = "Provided properties that will be displayed",
              GroupName = SystemTabNames.Content,
              Order = 1)]
         [AllowedTypes(typeof(LatestPropertiesBlockItem))]
