@@ -10,7 +10,8 @@ namespace HomeProperty.Models.Pages
     [AvailableContentTypes(Exclude = new[] { typeof(StartPage), 
         typeof(LatestPropertiesBlockItem),
         typeof(OurAgentsBlockItem),
-        typeof(PropertiesCarouselBlockItem)})]
+        typeof(PropertiesCarouselBlockItem),
+        typeof(LatestNewsBlockItem)})]
     public class StandardPage : SitePageData
     {
         [CultureSpecific]
