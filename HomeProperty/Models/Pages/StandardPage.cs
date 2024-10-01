@@ -11,7 +11,8 @@ namespace HomeProperty.Models.Pages
         typeof(LatestPropertiesBlockItem),
         typeof(OurAgentsBlockItem),
         typeof(PropertiesCarouselBlockItem),
-        typeof(LatestNewsBlockItem)})]
+        typeof(LatestNewsBlockItem),
+        typeof(ClientBrandBlockItem)})]
     public class StandardPage : SitePageData
     {
         [CultureSpecific]

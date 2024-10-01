@@ -1,0 +1,18 @@
+﻿@model PromoBannerBlock
+
+<!-- Promo Banner Section -->
+<section id="aa-promo-banner" style="background-image: url(@Url.ContentUrl(Model.PromoBannerImage))">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-promo-banner-area">
+                    <h3>@Html.PropertyFor(m => m.PromoBannerTitle)</h3>
+                    <p>@Html.PropertyFor(m => m.PromoBannerDescription)</p>
+                    <br  />
+                    <a href="#" class="aa-view-btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / Promo Banner Section -->
