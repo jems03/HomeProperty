@@ -35,8 +35,12 @@ namespace HomeProperty.Business
             return new LayoutModel
             {
                 LogoUrl = startPage.LogoUrl,
-                //MenuItems = childPages.ToList(),
-                MenuItems = startPage.Navigation,
+                LogoLink = startPage.LogoLink,
+                ContactEmail = startPage.ContactEmail,
+                ContactNumber = startPage.ContactNumber,
+                MenuItems = startPage.HeaderNavigation,
+                FooterSection = startPage.FooterSection,
+                FooterNavigation = startPage.FooterNavigation,
             };
         }
     }

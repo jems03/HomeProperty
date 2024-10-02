@@ -1,9 +1,4 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAnnotations;
-using EPiServer.SpecializedProperties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Pages
 {
@@ -16,14 +11,14 @@ namespace HomeProperty.Models.Pages
             Name = "SEO",
             Description = "This will be used for SEO Optimization",
             GroupName = SystemTabNames.Content,
-            Order = 10)]
+            Order = 1)]
         public virtual string? MetaTitle { get; set; }
 
         [CultureSpecific]
         [Display(
            Name = "Sections",
            Description = "Add website sections",
-           Order = 20)]
+           Order = 2)]
         public virtual ContentArea? Sections { get; set; }
     }
 }
