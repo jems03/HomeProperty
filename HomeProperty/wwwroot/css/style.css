@@ -224,6 +224,7 @@ img {
     top: 35px;
     width: 100%;
     z-index: 99;
+    text-transform: uppercase;
 }
 
     #aa-menu-area .main-navbar {

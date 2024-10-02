@@ -1,4 +1,6 @@
-﻿@model IPageViewModel<SitePageData>
+﻿@using EPiServer.Web.Routing
+@inject UrlResolver UrlResolver
+@model IPageViewModel<SitePageData>
 
 <!-- Start header section -->
 <header id="aa-header">
@@ -31,7 +33,6 @@
     </div>
 </header>
 <!-- End header section -->
-
 <!-- Start menu section -->
 <section id="aa-menu-area">
     <nav class="navbar navbar-default main-navbar" role="navigation">
@@ -50,55 +51,34 @@
                 @* <a class="navbar-brand aa-logo" href="index.html"> Home <span>Property</span></a> *@
                 <!-- Image based logo -->
                 <a class="navbar-brand aa-logo-img" href="@Url.ContentUrl(Model.Layout.LogoLink?.Href)"><img src="@Url.ContentUrl(Model.Layout.LogoUrl)" alt="logo"></a>
-            
+
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                @* <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-                    <li class="active"><a href="index.html">HOME</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">PROPERTIES <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="properties.html">PROPERTIES</a></li>
-                            <li><a href="properties-detail.html">PROPERTIES DETAIL</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="gallery.html">GALLERY</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">BLOG <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="blog-archive.html">BLOG</a></li>
-                            <li><a href="blog-single.html">BLOG DETAILS</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                    <li><a href="404.html">404 PAGE</a></li>
-                </ul> *@
+
 
                 <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-                @* @foreach(var menuItem in Model.Layout.MenuItems)
-                {
-                    if(Model.Layout.MenuItems?.Count > 0)
+                    @foreach (var headerMenu in Model.Layout.Navigation)
                     {
-                            <li><a href="@Url.ContentUrl(menuItem.Href)" target="@menuItem.Target">@menuItem.Text</a></li>
-                    }
-                } *@
-                    @foreach(var headerMenu in Model.Layout.Navigation)
-                    {
-                        @if(headerMenu.SubMenuItems.Count > 0)
-                        {                           
+                        // Resolve URL for the main navigation item
+                        var resolvedUrl = UrlResolver.Current.GetUrl(headerMenu.NavigationItem.Href);
+
+                        @if (headerMenu.SubMenuItems != null && headerMenu.SubMenuItems.Any())
+                        {
                             <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">@headerMenu.NavigationItem.Text <span class="caret"></span></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="@resolvedUrl">@headerMenu.NavigationItem.Text <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     @foreach (var subMenu in headerMenu.SubMenuItems)
                                     {
-                                        <li><a href="@subMenu.Href">@subMenu.Text</a></li>
+                                        // Resolve URL for the submenu item
+                                        var subMenuUrl = UrlResolver.Current.GetUrl(subMenu.Href);
+                                        <li><a href="@subMenuUrl">@subMenu.Text</a></li>
                                     }
                                 </ul>
                             </li>
                         }
                         else
                         {
-                            <li><a href="gallery.html">@headerMenu.NavigationItem.Text</a></li>
+                            <li><a href="@resolvedUrl">@headerMenu.NavigationItem.Text</a></li>
                         }
                     }
                 </ul>
