@@ -38,7 +38,8 @@ namespace HomeProperty.Business
                 LogoLink = startPage.LogoLink,
                 ContactEmail = startPage.ContactEmail,
                 ContactNumber = startPage.ContactNumber,
-                MenuItems = startPage.HeaderNavigation,
+                //MenuItems = startPage.HeaderNavigation,
+                Navigation = startPage.Navigation,
                 FooterSection = startPage.FooterSection,
                 FooterNavigation = startPage.FooterNavigation,
             };

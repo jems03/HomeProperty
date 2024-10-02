@@ -44,14 +44,21 @@ namespace HomeProperty.Models.Pages
            Order = 4)]
         public virtual string? ContactEmail { get; set; }
 
+        //[CultureSpecific]
+        //[Display(
+        //   Name = "Header Navigation",
+        //   GroupName = Globals.GroupNames.Layout,
+        //   Order = 5)]
+        //public virtual LinkItemCollection? HeaderNavigation { get; set; }
+
         [CultureSpecific]
         [Display(
-           Name = "Header Navigation",
-           GroupName = Globals.GroupNames.Layout,
-           Order = 5)]
-        public virtual LinkItemCollection? HeaderNavigation { get; set; }
+          Name = "Header Navigation",
+          GroupName = Globals.GroupNames.Layout,
+          Order = 5)]
+        public virtual IList<HeaderMenuBlockItem>? Navigation { get; set; }
 
-       
+
         [Display(
           Name = "Footer Section",
           GroupName = Globals.GroupNames.Layout,

@@ -75,13 +75,32 @@
                 </ul> *@
 
                 <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-                @foreach(var menuItem in Model.Layout.MenuItems)
+                @* @foreach(var menuItem in Model.Layout.MenuItems)
                 {
                     if(Model.Layout.MenuItems?.Count > 0)
                     {
                             <li><a href="@Url.ContentUrl(menuItem.Href)" target="@menuItem.Target">@menuItem.Text</a></li>
                     }
-                }
+                } *@
+                    @foreach(var headerMenu in Model.Layout.Navigation)
+                    {
+                        @if(headerMenu.SubMenuItems.Count > 0)
+                        {                           
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">@headerMenu.NavigationItem.Text <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    @foreach (var subMenu in headerMenu.SubMenuItems)
+                                    {
+                                        <li><a href="@subMenu.Href">@subMenu.Text</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a href="gallery.html">@headerMenu.NavigationItem.Text</a></li>
+                        }
+                    }
                 </ul>
             </div>
             <!--/.nav-collapse -->

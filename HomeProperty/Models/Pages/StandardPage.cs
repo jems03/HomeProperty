@@ -15,6 +15,7 @@ namespace HomeProperty.Models.Pages
         typeof(ClientBrandBlockItem),
         typeof(ClientTestimonialBlockItem),
         typeof(FooterSectionBlockItem),
+        typeof(HeaderMenuBlockItem),
         })]
 
     public class StandardPage : SitePageData

@@ -10,8 +10,9 @@ namespace HomeProperty.Models.ViewModels
         public string? ContactNumber { get; set; }
         public string? ContactEmail { get; set; }
 
-        //public IList<SitePageData> MenuItems { get; set; }
-        public LinkItemCollection? MenuItems { get; set; }
+        //public LinkItemCollection? MenuItems { get; set; }
+        public IList<HeaderMenuBlockItem>? Navigation { get; set; }
+
 
         public FooterSectionBlockItem? FooterSection {  get; set; }
 
