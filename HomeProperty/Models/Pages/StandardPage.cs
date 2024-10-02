@@ -8,7 +8,7 @@ namespace HomeProperty.Models.Pages
         GUID = "a65063f9-d042-428e-8afe-b235a6d92ff4",
         Description = "")]
     [AvailableContentTypes(Exclude = new[] { typeof(StartPage), 
-        typeof(LatestPropertiesBlockItem),
+        typeof(PropertiesBlockItem),
         typeof(OurAgentsBlockItem),
         typeof(PropertiesCarouselBlockItem),
         typeof(LatestNewsBlockItem),

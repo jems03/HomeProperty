@@ -8,10 +8,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
 {
-    [ContentType(DisplayName = "Latest Properties Block Item", 
+    [ContentType(DisplayName = "Properties Block Item", 
         GUID = "63352182-260a-4d18-b60f-51584dbd38c7", 
         Description = "Provide the latest properties' details")]
-    public class LatestPropertiesBlockItem : BlockData
+    public class PropertiesBlockItem : BlockData
     {
         [CultureSpecific]
         [Display(
