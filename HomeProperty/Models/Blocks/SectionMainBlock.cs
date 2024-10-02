@@ -1,6 +1,7 @@
 ﻿using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
+using EPiServer.Web;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -35,9 +36,18 @@ namespace HomeProperty.Models.Blocks
 
         [CultureSpecific]
         [Display(
-            Name = "Gray Background",
+            Name = "Image Background",
+            Description = "Select image background",
             GroupName = SystemTabNames.Content,
             Order = 4)]
+        [UIHint(UIHint.Image)]
+        public virtual Url? MainSectionImageUrl { get; set; }
+
+        [CultureSpecific]
+        [Display(
+            Name = "Gray Background",
+            GroupName = SystemTabNames.Content,
+            Order = 5)]
         public virtual bool GrayBackground { get; set; }
 
     }

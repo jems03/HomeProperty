@@ -18,15 +18,14 @@ namespace HomeProperty.Models.Pages
            Name = "Logo Url",
            Description = "Select website logo",
            GroupName = Globals.GroupNames.Layout,
-           Order = 10)]
-        [UIHint(UIHint.Image)]
-        
+           Order = 1)]
+        [UIHint(UIHint.Image)]       
         public virtual Url? LogoUrl { get; set; }
 
         [CultureSpecific]
         [Display(
            GroupName = Globals.GroupNames.Layout,
-           Order = 20)]
+           Order = 2)]
         [Required]
         public virtual LinkItemCollection? Navigation { get; set; }
     }

@@ -20,10 +20,8 @@ namespace HomeProperty.Models.Pages
             Name = "Section Image Url",
             Description = "Select section image",
             GroupName = SystemTabNames.Content,
-            Order = 10)]
+            Order = 1)]
         [UIHint(UIHint.Image)]
-       
-
         public virtual Url? MainSectionImageUrl { get; set; }
     }
 }

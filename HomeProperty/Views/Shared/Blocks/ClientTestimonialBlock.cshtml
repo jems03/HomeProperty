@@ -1,0 +1,49 @@
+﻿@model ClientTestimonialBlock
+
+@if(Model != null && Model.ClientTestimonialItems != null)
+{
+    <!-- Client Testimonial -->
+    <section id="aa-client-testimonial" style="background-image:url(@Model.ClientTestimonialImage)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-client-testimonial-area">
+                        <div class="aa-title">
+                            <h2>@Html.PropertyFor(m => m.ClientTestimonialTitle)</h2>
+                            <span></span>
+                            <p>@Html.Raw(@Model.ClientTestimonialDescription)</p>
+                        </div>
+                        <!-- testimonial content -->
+                        <div class="aa-testimonial-content">
+                            <!-- testimonial slider -->
+                            <ul class="aa-testimonial-slider">
+                                @foreach(var client in Model.ClientTestimonialItems)
+                                {
+                                    <li>
+                                        <div class="aa-testimonial-single">
+                                            <div class="aa-testimonial-img">
+                                                <img src="@Url.ContentUrl(client.ClientImage)" alt="testimonial img">
+                                            </div>
+                                            <div class="aa-testimonial-info">
+                                                <p>@client.ClientDescription</p>
+                                            </div>
+                                            <div class="aa-testimonial-bio">
+                                                <p>@client.ClientName</p>
+                                                <span>@client.ClientJobPosition</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                }                                                         
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Client Testimonial -->
+}
+else
+{
+   // Do not render
+}
