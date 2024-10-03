@@ -25,11 +25,11 @@
                                                 <img src="@Url.ContentUrl(client.ClientImage)" alt="testimonial img">
                                             </div>
                                             <div class="aa-testimonial-info">
-                                                <p>@client.ClientDescription</p>
+                                                <p>@Html.PropertyFor(m => client.ClientDescription)</p>
                                             </div>
                                             <div class="aa-testimonial-bio">
-                                                <p>@client.ClientName</p>
-                                                <span>@client.ClientJobPosition</span>
+                                                <p>@Html.PropertyFor(m => client.ClientName)</p>
+                                                <span>@Html.PropertyFor(m => client.ClientJobPosition)</span>
                                             </div>
                                         </div>
                                     </li>
