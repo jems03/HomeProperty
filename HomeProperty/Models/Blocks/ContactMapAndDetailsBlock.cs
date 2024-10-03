@@ -10,25 +10,25 @@ namespace HomeProperty.Models.Blocks
         [Display(
             Name = "Contact Description",
             GroupName = SystemTabNames.Content,
-            Order = 10)]
+            Order = 1)]
         public virtual XhtmlString? ContactDescription { get; set; }
 
         [Display(
             Name = "Contact Number",
             GroupName = SystemTabNames.Content,
-            Order = 20)]
+            Order = 2)]
         public virtual string? ContactNumber { get; set; }
 
         [Display(
             Name = "Contact Email",
             GroupName = SystemTabNames.Content,
-            Order = 30)]
+            Order = 3)]
         public virtual string? ContactEmail { get; set; }
 
         [Display(
             Name = "Contact Address",
             GroupName = SystemTabNames.Content,
-            Order = 20)]
+            Order = 4)]
         public virtual string? ContactAddress { get; set; }
     }
 }

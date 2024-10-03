@@ -1,4 +1,5 @@
 using EPiServer.Cms.Shell;
+using EPiServer.Cms.TinyMce.PropertySettings.Internal;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
@@ -32,7 +33,9 @@ namespace HomeProperty
                 .AddCms()
                 .AddHomeProperty()
                 .AddAdminUserRegistration()
-                .AddEmbeddedLocalization<Startup>();           
+                .AddEmbeddedLocalization<Startup>();
+
+           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
