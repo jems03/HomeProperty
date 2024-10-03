@@ -7,6 +7,7 @@ using HomeProperty.Business.Rendering;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using EPiServer.Cms.TinyMce.Core;
+using EPiServer.Security;
 
 
 namespace HomeProperty.Extensions
@@ -17,6 +18,7 @@ namespace HomeProperty.Extensions
         {
             services.Configure<RazorViewEngineOptions>(options => options.ViewLocationExpanders.Add(new SiteViewEngineLocationExpander()));
             services.Configure<MvcOptions>(options => options.Filters.Add<PageContextActionFilter>());
+            services.AddHttpContextAccessor();
 
             // Adding Configuration on Display Options
             services.Configure<DisplayOptions>(displayOption =>
@@ -36,6 +38,18 @@ namespace HomeProperty.Extensions
             {
                 config.Default()
                 .AddEpiserverSupport()
+                .AddSettingsTransform("role-based-settings", (settings, content, propertyName) =>
+                {
+                    settings.AddPlugin("link");
+                    settings.AppendToolbar("| link");
+
+                    if (PrincipalInfo.CurrentPrincipal.IsInRole(Globals.WebRoles.WebAdmins))
+                    {
+                        settings.AddPlugin("code");
+                        settings.AppendToolbar("| code");
+                    }
+                })
+
                 .AddSetting("force_p_newlines", false);
                 //.AddSetting("forced_root_block", "");
             });
