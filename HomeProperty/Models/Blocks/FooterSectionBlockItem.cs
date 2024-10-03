@@ -24,28 +24,28 @@ namespace HomeProperty.Models.Blocks
 
         [CultureSpecific]
         [Display(
-           Name = "Agent Facebook Page",
+           Name = "Facebook Page",
            GroupName = SystemTabNames.Content,
            Order = 3)]
         public virtual Url? FacebookLink { get; set; }
 
         [CultureSpecific]
         [Display(
-           Name = "Agent Twitter Page",
+           Name = "Twitter Page",
            GroupName = SystemTabNames.Content,
            Order = 4)]
         public virtual Url? TwitterLink { get; set; }
 
         [CultureSpecific]
         [Display(
-           Name = "Agent LinkedIn Page",
+           Name = "Google + Page",
            GroupName = SystemTabNames.Content,
            Order = 5)]
         public virtual Url? GooglePlusLink { get; set; }
 
         [CultureSpecific]
         [Display(
-           Name = "Agent Google + Page",
+           Name = "Youtube + Page",
            GroupName = SystemTabNames.Content,
            Order = 6)]
         public virtual Url? YoutubeLink { get; set; }      

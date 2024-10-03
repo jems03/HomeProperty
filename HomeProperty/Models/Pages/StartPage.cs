@@ -21,13 +21,14 @@ namespace HomeProperty.Models.Pages
            GroupName = Globals.GroupNames.Layout,
            Order = 1)]
         [UIHint(UIHint.Image)]
+        [Editable(true)]
         public virtual Url? LogoUrl { get; set; }
 
         [CultureSpecific]
         [Display(
            Name = "Logo Link",
            GroupName = Globals.GroupNames.Layout,
-           Order = 2)]
+           Order = 2),]
         public virtual LinkItem? LogoLink { get; set; }
 
         [CultureSpecific]
