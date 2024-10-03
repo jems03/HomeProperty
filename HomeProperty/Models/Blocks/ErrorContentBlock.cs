@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EPiServer.SpecializedProperties;
+using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
 {
@@ -10,13 +11,19 @@ namespace HomeProperty.Models.Blocks
         [Display(
            Name = "Error Title",
            GroupName = SystemTabNames.Content,
-           Order = 10)]
+           Order = 1)]
         public virtual string? ErrorTitle { get; set; }
 
         [Display(
             Name = "Error Description",
             GroupName = SystemTabNames.Content,
-            Order = 20)]
+            Order = 2)]
         public virtual XhtmlString? ErrorDescrption { get; set; }
+
+        [Display(
+            Name = "Redirection Page",
+            GroupName = SystemTabNames.Content,
+            Order = 2)]
+        public virtual LinkItem? RedirectionPage { get; set; }
     }
 }
