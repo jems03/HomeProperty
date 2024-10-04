@@ -1,9 +1,4 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAnnotations;
-using EPiServer.SpecializedProperties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Pages
 {
@@ -18,5 +13,12 @@ namespace HomeProperty.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 1)]
         public virtual string? MetaTitle { get; set; }
+
+        [CultureSpecific]
+        [Display(
+           Name = "Sections",
+           Description = "Add website sections",
+           Order = 2)]
+        public virtual ContentArea? Sections { get; set; }
     }
 }

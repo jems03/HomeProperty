@@ -1,0 +1,21 @@
+﻿@model ErrorContentBlock
+@using EPiServer.Web.Routing
+@inject UrlResolver UrlResolver
+
+<section id="aa-error">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-error-area">
+                    <h2>@Html.PropertyFor(m => m.ErrorTitle)</h2>
+                    <p><span class="fa fa-warning"></span>@Html.PropertyFor(m => m.ErrorDescrption)</p>
+
+                    @{
+                        var resolvedUrl = UrlResolver.Current.GetUrl(Model.RedirectionPage.Href);
+                    }
+                    <a href="@resolvedUrl">@Model.RedirectionPage.Text</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,16 @@
+﻿@model SectionMainBlock
+
+<section id="aa-section-title" class="@(Model.GrayBackground ? "gray-bg" : "")">
+    <div class="container">
+        <div class="aa-section-title-area">
+            <div class="aa-title">
+                <h2>@Html.PropertyFor(m => m.SectionTitle)</h2>
+                <span></span>
+                <p>@Html.PropertyFor(m => m.SectionDescription)</p>
+            </div>
+        </div>
+    </div>
+
+    @Html.PropertyFor(m => m.SectionContentArea)
+</section>
+

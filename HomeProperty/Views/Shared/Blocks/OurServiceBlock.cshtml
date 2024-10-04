@@ -1,0 +1,41 @@
+﻿@model OurServiceBlock
+
+@if(Model != null && Model.OurServiceItems != null)
+{
+    <!-- Service section -->
+     <section id="aa-service">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-service-area">                       
+                        <!-- service content -->
+                        <div class="aa-service-content">
+                            <div class="row">
+
+                                @foreach(var service in Model.OurServiceItems)
+                                {
+                                    <div class="col-md-3">
+                                        <div class="aa-single-service">
+                                            <div class="aa-service-icon">
+                                                <span class="fa @service.OurServiceIcon"></span>
+                                            </div>
+                                            <div class="aa-single-service-content">
+                                                <h4><a href="#">@service.OurServiceTitle</a></h4>
+                                                <p>@service.OurServiceDescription</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }                                                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+    <!-- / Service section -->
+}
+else
+{
+    // Do not render
+}

@@ -1,0 +1,32 @@
+﻿@model ClientBrandBlock
+
+@if(Model != null && Model.ClientBrandsList != null)
+{
+    <!-- Client brand -->
+    <section id="aa-client-brand">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-client-brand-area">
+                        <ul class="aa-client-brand-slider">
+                            @foreach(var client in Model.ClientBrandsList)
+                            {
+                                <li>
+                                    <div class="aa-client-single-brand">
+                                        @* <img src="/img/client-brand-1.png" alt="brand image"> *@
+                                        <img src="@Url.ContentUrl(client.ClientImage)" alt="brand image">
+                                    </div>
+                                </li>
+                            }                                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Client brand -->
+}
+else
+{
+    // Do not render
+}

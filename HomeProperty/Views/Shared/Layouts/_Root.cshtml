@@ -1,12 +1,14 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-@model SitePageData
+@model IPageViewModel<SitePageData>
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@Model.MetaTitle</title>
+
+    <title>@Model.CurrentPage.MetaTitle</title>
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
     <!-- Font awesome -->
@@ -43,13 +45,13 @@
     <!-- END SCROLL TOP BUTTON -->
 
     @{
-        await Html.RenderPartialAsync("Header");
+         await Html.RenderPartialAsync("Header", Model);
     }
     <div>
         @RenderBody()
     </div>
     @{
-        await Html.RenderPartialAsync("Footer");
+        await Html.RenderPartialAsync("Footer", Model);
     }
 
 

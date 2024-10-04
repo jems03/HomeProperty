@@ -1,0 +1,26 @@
+﻿@model ContactMapAndDetailsBlock
+
+<section id="aa-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-contact-area">
+                    <div class="aa-contact-top">
+                        <div class="aa-contact-top-left">
+                            <iframe width="100%" height="450" frameborder="0" allowfullscreen="" style="border:0" src="@Url.ContentUrl(Model.MapCoordinates))"></iframe>
+                        </div>
+                        <div class="aa-contact-top-right">
+                            <h2>Contact</h2>
+                            <p>@Html.PropertyFor(m => m.ContactDescription)</p>
+                            <ul class="contact-info-list">
+                                <li> <i class="fa fa-phone"></i> @Html.PropertyFor(m => m.ContactNumber)</li>
+                                <li> <i class="fa fa-envelope-o"></i> @Html.PropertyFor(m => m.ContactEmail)</li>
+                                <li> <i class="fa fa-map-marker"></i> @Html.PropertyFor(m => m.ContactAddress)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

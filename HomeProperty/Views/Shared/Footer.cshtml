@@ -1,4 +1,6 @@
-﻿<!-- Footer -->
+﻿@model IPageViewModel<SitePageData>
+
+<!-- Footer -->
 <footer id="aa-footer">
     <div class="container">
         <div class="row">
@@ -7,24 +9,44 @@
                     <div class="row">
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="aa-footer-left">
-                                <p>Designed by <a rel="nofollow" href="http://www.markups.io/">MarkUps.io</a></p>
+                                <p>Designed by <a rel="nofollow" href="@Url.ContentUrl(Model.Layout.FooterSection.FooterLink)">@Model.Layout.FooterSection?.FooterTitle</a></p>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <div class="aa-footer-middle">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-youtube"></i></a>
+
+                                @if (Model.Layout.FooterSection?.FacebookLink != null)
+                                {
+                                    <a href="@Model.Layout.FooterSection?.FacebookLink"><i class="fa fa-facebook"></i></a>
+                                }
+                                @if (Model.Layout.FooterSection?.TwitterLink != null)
+                                {
+                                    <a href="@Model.Layout.FooterSection?.TwitterLink"><i class="fa fa-twitter"></i></a>
+                                }
+                                @if (Model.Layout.FooterSection?.GooglePlusLink != null)
+                                {
+                                    <a href="@Model.Layout.FooterSection?.GooglePlusLink"><i class="fa fa-google-plus"></i></a>
+                                }
+                                @if (Model.Layout.FooterSection?.YoutubeLink != null)
+                                {
+                                    <a href="@Model.Layout.FooterSection?.YoutubeLink"><i class="fa fa-youtube"></i></a>
+                                }
+
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="aa-footer-right">
-                                <a href="#">Home</a>
+                                @if(Model.Layout.FooterNavigation != null){
+                                    @foreach (var footerNav in Model.Layout.FooterNavigation)
+                                    {
+                                        <a href="@Url.ContentUrl(footerNav.Href)" target="@footerNav.Target">@footerNav.Text</a>
+                                    }
+                                }
+                                @* <a href="#">Home</a>
                                 <a href="#">Support</a>
                                 <a href="#">License</a>
                                 <a href="#">FAQ</a>
-                                <a href="#">Privacy & Term</a>
+                                <a href="#">Privacy & Term</a> *@
                             </div>
                         </div>
                     </div>

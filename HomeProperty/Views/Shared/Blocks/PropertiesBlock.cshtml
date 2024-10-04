@@ -1,0 +1,50 @@
+﻿@using HomeProperty.Utilities
+@model PropertiesBlock
+
+@if (Model != null && Model.LatestPropertiesItems != null)
+{
+    <!-- Latest property -->
+    <div class="container">
+        <div class="aa-latest-property-area">
+            <div class="aa-latest-properties-content">
+                @foreach (var latestPropertyItem in Model.LatestPropertiesItems)
+                {
+                    <div class="col-md-4">
+                        <article class="aa-properties-item">
+                            <a href="#" class="aa-properties-item-img">
+                                <img src="@Url.ContentUrl(latestPropertyItem.LatestPropertyImage)" alt="img">
+                            </a>
+                            <div class="aa-tag @latestPropertyItem.LatestPropertyStatus">
+                                @PropertyStatusHelper.GetPropertyStatusText(latestPropertyItem.LatestPropertyStatus)
+                            </div>
+                            <div class="aa-properties-item-content">
+                                <div class="aa-properties-info">
+                                    <span>@latestPropertyItem.LatestPropertyRoom Rooms</span>
+                                    <span>@latestPropertyItem.LatestPropertyBed Beds</span>
+                                    <span>@latestPropertyItem.LatestPropertyBath Baths</span>
+                                    <span>@latestPropertyItem.LatestPropertySize SQ FT</span>
+                                </div>
+                                <div class="aa-properties-about">
+                                    <h3><a href="#">@latestPropertyItem.LatestPropertyName</a></h3>
+                                    <p>@Html.Raw(latestPropertyItem.LatestPropertyDescription)</p>
+                                </div>
+                                <div class="aa-properties-detial">
+                                    <span class="aa-price">
+                                        $@latestPropertyItem.LatestPropertyPrice
+                                    </span>
+                                    <a href="#" class="aa-secondary-btn">View Details</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+    <!-- / Latest property -->
+}
+else
+{
+    // Do not render
+}

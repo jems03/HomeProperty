@@ -1,6 +1,21 @@
-﻿@model StandardPage
+﻿@model PageViewModel<StandardPage>
 
-<section style="padding-top:200px" @Html.EditAttributes(m => m.MetaTitle)>
-    <p>Testing Onpage editing</p>
-    @* <h1>@Model.Heading</h1> *@
+<!-- Start Property header  -->
+<section id="aa-property-header" style="background-image:url(@Url.ContentUrl(Model.CurrentPage.MainSectionImageUrl))">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-property-header-inner">
+                    <h2>@Model.CurrentPage.MetaTitle</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="#">HOME</a></li>
+                        <li class="active">@Model.CurrentPage.MetaTitle</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+<!-- End Property header  -->
+
+@Html.PropertyFor(m => m.CurrentPage.Sections)

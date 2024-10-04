@@ -1,0 +1,33 @@
+﻿@model AboutUsBlock 
+
+<!-- About us -->
+<section id="aa-about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-about-us-area">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="aa-about-us-left">
+                                <img src="@Url.ContentUrl(Model.AboutImage)" alt="image">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="aa-about-us-right">
+                                <div class="aa-title">
+                                    <h2>@Html.PropertyFor(m => m.AboutUsTitle)</h2>
+                                    <span></span>
+                                </div>
+                                <p>@Html.PropertyFor(m => m.AboutUsDescription)</p>
+                               
+                                    @Html.PropertyFor(m => m.AboutUsAdditionalRemarks)
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / About us -->

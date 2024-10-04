@@ -1,0 +1,36 @@
+﻿@model PropertiesCarouselBlock
+
+@if (Model != null && Model.PropertyItems != null)
+{
+    <!-- Start slider  -->
+    <section id="aa-slider">
+        <div class="aa-slider-area">
+            <!-- Top slider -->
+            <div class="aa-top-slider">
+                @foreach (var propertyItem in Model.PropertyItems)
+                {
+                    <!-- Top slider single slide -->
+                    <div class="aa-top-slider-single">
+                        <img src="@Url.ContentUrl(propertyItem.PropertyImage)" alt="img">
+                        <!-- Top slider content -->
+                        <div class="aa-top-slider-content">
+                            <span class="aa-top-slider-catg">@propertyItem.PropertyCategory</span>
+                            <h2 class="aa-top-slider-title">@propertyItem.PropertySize Square Feet</h2>
+                            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>@propertyItem.PropertyAddress</p>
+                            <span class="aa-top-slider-off">@propertyItem.PropertyDiscount% OFF</span>
+                            <p class="aa-top-slider-price">$@propertyItem.PropertyPrice</p>
+                            <a href="#" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
+                        </div>
+                        <!-- / Top slider content -->
+                    </div>
+                    <!-- / Top slider single slide -->
+                }
+            </div>
+        </div>
+    </section>
+    <!-- End slider  -->
+}
+else
+{
+    // Do not render
+}
