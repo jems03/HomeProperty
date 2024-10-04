@@ -22,14 +22,14 @@ namespace HomeProperty.Models.Blocks
             Name = "About Description",
             GroupName = SystemTabNames.Content,
             Order = 2)]
-        [UIHint("TinyMCEDescriptor")]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? AboutUsDescription { get; set; }
 
         [Display(
            Name = "Additional Remarks",
            GroupName = SystemTabNames.Content,
            Order = 3)]
-        //[UIHint("TinyMCEDescriptor")]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? AboutUsAdditionalRemarks { get; set; }
 
         [CultureSpecific]

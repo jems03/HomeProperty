@@ -4,7 +4,7 @@ using EPiServer.Shell.ObjectEditing.EditorDescriptors;
 
 namespace HomeProperty.Business.UIDescriptiors
 {
-    [EditorDescriptorRegistration(TargetType = typeof(XhtmlString), UIHint = "TinyMCEDescriptor" ,EditorDescriptorBehavior = EditorDescriptorBehavior.ExtendBase)]
+    [EditorDescriptorRegistration(TargetType = typeof(XhtmlString), UIHint = Globals.UIHintDescriptors.TinyMCE ,EditorDescriptorBehavior = EditorDescriptorBehavior.ExtendBase)]
     public class TinyMceEditorDescriptor : EditorDescriptor
     {
         public override void ModifyMetadata(ExtendedMetadata metadata, IEnumerable<Attribute> attributes)
@@ -16,11 +16,12 @@ namespace HomeProperty.Business.UIDescriptiors
             ClientEditingClass = "epi-cms/contentediting/editors/TinyMCEEditor";
 
             var settings = new Dictionary<string, object>
-        {
-            { "force_p_newlines", false },
-            { "plugins", "link" }, // Add plugin for everyone
-            { "toolbar", "link" }   // Toolbar for everyone
-        };
+            {
+                { "force_p_newlines", false },
+                { "menubar", false },
+                { "plugins", "link image lists searchreplace fullscreen help" }, // Include necessary plugins
+                { "toolbar", "blocks | bold italic | link | epi-create-block | anchor | image | bullist numlist | outdent indent | searchreplace | fullscreen | help" }, // Customize the toolbar              
+            };
 
             if (PrincipalInfo.CurrentPrincipal.IsInRole(Globals.WebRoles.WebAdmins))
             {
@@ -29,7 +30,8 @@ namespace HomeProperty.Business.UIDescriptiors
             }
 
             // Set the customized settings to the editor configuration
-            metadata.EditorConfiguration["tinyMCE"] = settings;
+            metadata.EditorConfiguration["settings"] = settings;
+
         }
     }
 }

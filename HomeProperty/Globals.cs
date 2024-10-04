@@ -14,7 +14,10 @@ namespace HomeProperty
             public const string Layout = "Layout";
         }
 
-       
+       public static class UIHintDescriptors
+        {
+            public const string TinyMCE = "TinyMCEDescriptor";
+        }
 
         public static class WebRoles
         {
