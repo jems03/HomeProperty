@@ -33,26 +33,26 @@ namespace HomeProperty.Extensions
             services.AddDetection();
             services.AddContentManager();
 
-            // Tiny MCE Configuration
-            services.Configure<TinyMceConfiguration>(config =>
-            {
-                config.Default()
-                .AddEpiserverSupport()
-                .AddSettingsTransform("role-based-settings", (settings, content, propertyName) =>
-                {
-                    settings.AddPlugin("link");
-                    settings.AppendToolbar("| link");
+            //Tiny MCE Configuration
+            //services.Configure<TinyMceConfiguration>(config =>
+            //{
+            //    config.Default()
+            //    .AddEpiserverSupport()
+            //    .AddSettingsTransform("role-based-settings", (settings, content, propertyName) =>
+            //    {
+            //        settings.AddPlugin("link");
+            //        settings.AppendToolbar("| link");
 
-                    if (PrincipalInfo.CurrentPrincipal.IsInRole(Globals.WebRoles.WebAdmins))
-                    {
-                        settings.AddPlugin("code");
-                        settings.AppendToolbar("| code");
-                    }
-                })
+            //        if (PrincipalInfo.CurrentPrincipal.IsInRole(Globals.WebRoles.WebAdmins))
+            //        {
+            //            settings.AddPlugin("code");
+            //            settings.AppendToolbar("| code");
+            //        }
+            //    })
 
-                .AddSetting("force_p_newlines", false);
-                //.AddSetting("forced_root_block", "");
-            });
+            //    .AddSetting("force_p_newlines", false);
+            //    //.AddSetting("forced_root_block", "");
+            //});
 
             return services;
         }

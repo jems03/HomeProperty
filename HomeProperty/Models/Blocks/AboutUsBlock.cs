@@ -15,19 +15,21 @@ namespace HomeProperty.Models.Blocks
         [Display(
             Name = "About Title",
             GroupName = SystemTabNames.Content,
-            Order = 10)]
+            Order = 1)]
         public virtual string? AboutUsTitle { get; set; }
 
         [Display(
             Name = "About Description",
             GroupName = SystemTabNames.Content,
-            Order = 20)]
+            Order = 2)]
+        [UIHint("TinyMCEDescriptor")]
         public virtual XhtmlString? AboutUsDescription { get; set; }
 
         [Display(
            Name = "Additional Remarks",
            GroupName = SystemTabNames.Content,
-           Order = 30)]
+           Order = 3)]
+        //[UIHint("TinyMCEDescriptor")]
         public virtual XhtmlString? AboutUsAdditionalRemarks { get; set; }
 
         [CultureSpecific]
@@ -35,7 +37,7 @@ namespace HomeProperty.Models.Blocks
             Name = "About Image",
             Description = "Select about image",
             GroupName = SystemTabNames.Content,
-            Order = 40)]
+            Order = 4)]
         [UIHint(UIHint.Image)]
 
         public virtual Url? AboutImage { get; set; }

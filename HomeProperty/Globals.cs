@@ -14,6 +14,8 @@ namespace HomeProperty
             public const string Layout = "Layout";
         }
 
+       
+
         public static class WebRoles
         {
             public const string WebAdmins = "WebAdmins";
