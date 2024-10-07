@@ -18,6 +18,7 @@ namespace HomeProperty.Models.Blocks
             Name = "Error Description",
             GroupName = SystemTabNames.Content,
             Order = 2)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? ErrorDescrption { get; set; }
 
         [Display(

@@ -69,6 +69,7 @@ namespace HomeProperty.Models.Blocks
             Name = "Property Description",
             GroupName = SystemTabNames.Content,
             Order = 8)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? LatestPropertyDescription { get; set; }
 
         [CultureSpecific]

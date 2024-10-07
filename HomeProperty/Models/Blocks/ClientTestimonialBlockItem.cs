@@ -28,6 +28,7 @@ namespace HomeProperty.Models.Blocks
            Name = "Client Description",
            GroupName = SystemTabNames.Content,
            Order = 3)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? ClientDescription { get; set; }
 
        

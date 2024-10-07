@@ -25,6 +25,7 @@ namespace HomeProperty.Models.Blocks
             Name = "Section Descripton",
             GroupName = SystemTabNames.Content,
             Order = 2)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? SectionDescription { get; set; }
 
         [CultureSpecific]

@@ -33,6 +33,7 @@ namespace HomeProperty.Models.Blocks
             Name = "Promo Banner Description",
             GroupName = SystemTabNames.Content,
             Order = 3)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? PromoBannerDescription { get; set; }
     }
 }
