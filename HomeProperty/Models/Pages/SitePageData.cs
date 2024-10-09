@@ -19,7 +19,7 @@ namespace HomeProperty.Models.Pages
            Name = "Sections",
            Description = "Add website sections",
            GroupName = SystemTabNames.Content,
-           Order = 999)]
+           Order = 999)]       
         public virtual ContentArea? Sections { get; set; }
     }
 }

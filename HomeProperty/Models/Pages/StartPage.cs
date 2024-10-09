@@ -7,8 +7,8 @@ namespace HomeProperty.Models.Pages
 {
     [ContentType(
         DisplayName = "Start Page",
-        GUID = "bdebc7bd-3aac-4e0b-b06c-4b02b37dc191",
-        Description = "")]
+        GUID = "bdebc7bd-3aac-4e0b-b06c-4b02b37dc191"
+        )]
 
     [AvailableContentTypes(
         Exclude = [typeof(StartPage)])]
