@@ -46,13 +46,12 @@
     <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
     <!-- END SCROLL TOP BUTTON -->
-
     @{
-         await Html.RenderPartialAsync("Header", Model);
+        await Html.RenderPartialAsync("Header", Model);
     }
-    <div>
-        @RenderBody()
-    </div>
+
+    @RenderBody()
+
     @{
         await Html.RenderPartialAsync("Footer", Model);
     }
