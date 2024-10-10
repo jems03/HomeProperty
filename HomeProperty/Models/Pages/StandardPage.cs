@@ -11,7 +11,7 @@ namespace HomeProperty.Models.Pages
         typeof(PropertiesBlockItem),
         typeof(OurAgentsBlockItem),
         typeof(PropertiesCarouselBlockItem),
-        typeof(LatestNewsBlockItem),
+        typeof(BlogBlockItem),
         typeof(ClientBrandBlockItem),
         typeof(ClientTestimonialBlockItem),
         typeof(FooterSectionBlockItem),
