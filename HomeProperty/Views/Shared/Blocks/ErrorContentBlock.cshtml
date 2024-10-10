@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="aa-error-area">
                     <h2>@Html.PropertyFor(m => m.ErrorTitle)</h2>
-                    <p><span class="fa fa-warning"></span>@Html.PropertyFor(m => m.ErrorDescrption)</p>
+                    <span class="fa fa-warning"></span>@Html.PropertyFor(m => m.ErrorDescrption)
 
                     @{
                         var resolvedUrl = UrlResolver.Current.GetUrl(Model.RedirectionPage.Href);
