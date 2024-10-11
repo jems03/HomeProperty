@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using EPiServer.Cms.TinyMce.Core;
 using EPiServer.Security;
+using HomeProperty.Services;
 
 
 namespace HomeProperty.Extensions
@@ -53,6 +54,9 @@ namespace HomeProperty.Extensions
             //    .AddSetting("force_p_newlines", false);
             //    //.AddSetting("forced_root_block", "");
             //});
+
+            services.AddTransient<BlogPostService>();
+
 
             return services;
         }

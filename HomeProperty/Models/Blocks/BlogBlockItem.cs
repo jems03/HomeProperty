@@ -1,4 +1,6 @@
-﻿using EPiServer.Web;
+﻿using EPiServer.Data.Dynamic;
+using EPiServer.Web;
+using HomeProperty.Business.DataStore;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
@@ -36,5 +38,7 @@ namespace HomeProperty.Models.Blocks
            GroupName = SystemTabNames.Content,
            Order = 4)]
         public virtual string? BlogDescription { get; set; }
-    }
+
+        
+    }   
 }

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EPiServer.Data.Dynamic;
+using HomeProperty.Business.DataStore;
+using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
 {
@@ -13,6 +15,14 @@ namespace HomeProperty.Models.Blocks
              Description = "Provide the Latest News",
              GroupName = SystemTabNames.Content,
              Order = 1)]
+
         public virtual IList<BlogBlockItem>? BlogItems { get; set; }
+
+        public List<BlogPost> FetchBlogPosts()
+        {
+            var blogPostStore = DynamicDataStoreFactory.Instance.CreateStore(typeof(BlogPost));
+            var blogPosts = blogPostStore.LoadAll<BlogPost>().ToList(); // Fetch all blog posts
+            return blogPosts;
+        }
     }
 }
