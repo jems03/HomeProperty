@@ -1,72 +1,55 @@
 ﻿using EPiServer.Framework;
-using EPiServer.Framework.Initialization;
-using EPiServer.Security;
-using EPiServer.ServiceLocation;
-using HomeProperty.Models.Blocks;
-using HomeProperty.Services;
-using Microsoft.Extensions.Logging;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 
 namespace HomeProperty.Business.Initialization
 {
-    [InitializableModule]
-    [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
-    public class BlogBlockItemEventInitialization : IInitializableModule
+    //[InitializableModule]
+    //[ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
+    public class BlogBlockItemEventInitialization /*: IInitializableModule*/
     {
-        private IContentEvents _contentEvents;
-        private BlogPostService _blogPostService;
-        private IPrincipalAccessor _principalAccessor;
+        //private IContentEvents _contentEvents;
+        //private BlogPostService _blogPostService;
+        //private IPrincipalAccessor _principalAccessor;
 
-        public void Initialize(InitializationEngine context)
-        {
-            _contentEvents = context.Locate.Advanced.GetInstance<IContentEvents>();
-            _blogPostService = context.Locate.Advanced.GetInstance<BlogPostService>();
-            _principalAccessor = context.Locate.Advanced.GetInstance<IPrincipalAccessor>();
+        //public void Initialize(InitializationEngine context)
+        //{
+        //    _contentEvents = context.Locate.Advanced.GetInstance<IContentEvents>();
+        //    _blogPostService = context.Locate.Advanced.GetInstance<BlogPostService>();
+        //    _principalAccessor = context.Locate.Advanced.GetInstance<IPrincipalAccessor>();
 
-            _contentEvents.PublishedContent += OnPublishedContent;
-        }
+        //    _contentEvents.PublishedContent += OnPublishedContent;
+        //}
 
-        private void OnPublishedContent(object sender, ContentEventArgs e)
-        {
-            if(e.Content is IContentData contentData)
-            {
-                foreach (var property in contentData.Property)
-                {
-                    // Check if the property is a ReadOnlyCollection of BlogBlockItems
-                    if (property.Value is ReadOnlyCollection<BlogBlockItem> blogItems)
-                    {
-                        foreach (var blockItem in blogItems)
-                        {
-                            if (blockItem != null)
-                            {
-                                Debug.WriteLine("Found and processing BlogBlockItem.");
-                                _blogPostService.SaveBlogPost(blockItem, _principalAccessor.Principal);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Debug.WriteLine($"Property type: {property.Value.GetType().FullName}");
-                    }
-                }
-            }
+        //private void OnPublishedContent(object sender, ContentEventArgs e)
+        //{
+        //    if(e.Content is IContentData contentData)
+        //    {
+        //        foreach (var property in contentData.Property)
+        //        {
+        //            // Check if the property is a ReadOnlyCollection of BlogBlockItems
+        //            if (property.Value is ReadOnlyCollection<BlogBlockItem> blogItems)
+        //            {
+        //                foreach (var blockItem in blogItems)
+        //                {
+        //                    if (blockItem != null)
+        //                    {
+        //                        Debug.WriteLine("Found and processing BlogBlockItem.");
+        //                        _blogPostService.SaveBlogPost(blockItem, _principalAccessor.Principal);
 
-            //if (e.Content is BlogBlockItem blockItem)
-            //{
-            //    _blogPostService.SaveBlogPost(blockItem, _principalAccessor.Principal);
-            //}
-            //else
-            //{
-            //    // Log the actual type of content to help debug
-            //    var contentType = _contentEvents?.GetOriginalType().FullName ?? "null";
-            //    Debug.WriteLine($"Published content is not BlogBlockItem. Actual type: {contentType}");
-            //}
-        }
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                Debug.WriteLine($"Property type: {property.Value.GetType().FullName}");
+        //            }
+        //        }
+        //    }
+            
+        //}
 
-        public void Uninitialize(InitializationEngine context)
-        {
-            _contentEvents.PublishedContent -= OnPublishedContent;
-        }
+        //public void Uninitialize(InitializationEngine context)
+        //{
+        //    _contentEvents.PublishedContent -= OnPublishedContent;
+        //}
     }
 }

@@ -12,11 +12,6 @@ namespace HomeProperty.Business.DataStore
         public DateTime? BlogDate { get; set; }
         public string BlogImage { get; set; }
         public string Author { get; set; }
-        public int CommentCount { get; set; }
-
-        public BlogPost()
-        {
-            Id = Identity.NewIdentity();
-        }
+        public int CommentCount { get; set; }      
     }
 }
