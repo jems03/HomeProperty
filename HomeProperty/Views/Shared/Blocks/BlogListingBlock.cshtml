@@ -1,12 +1,41 @@
-﻿@model BlogListingBlock
+﻿@using EPiServer.Data
+@model BlogListingBlock
 @inject EPiServer.IContentLoader _contentLoader
+@inject HomeProperty.Business.DataStore.BlogSinglePage.ICommentRepository _commentRepository
 
 @{
+    // var blogPages = Model.BlogSinglePages
+    //     .Select(blogPage => _contentLoader.Get<BlogSinglePage>(blogPage))
+    //     .Where(blogPage => blogPage != null)
+    //     .OrderByDescending(blogPage => blogPage.BlogSingleDate)
+    //     .ToList();
+
     var blogPages = Model.BlogSinglePages
-        .Select(blogPage => _contentLoader.Get<BlogSinglePage>(blogPage))
-        .Where(blogPage => blogPage != null)
-        .OrderByDescending(blogPage => blogPage.BlogSingleDate)
+        .Select(blogPage =>
+        {
+            var page = _contentLoader.Get<BlogSinglePage>(blogPage);
+            if (page != null)
+            {
+                // Populate the comments from Dynamic Data Store
+                var allComments = _commentRepository.GetAllComments();
+
+                // Get comments for the current blog page
+                var blogComments = allComments.Where(m => m.BlogId == page.ContentLink.ID).ToList();
+
+                // Return an anonymous type with the blog page and comment count
+                return new
+                {
+                    BlogPage = page,
+                    CommentCount = blogComments.Count
+                };
+            }
+            return null; // We still need to return null if the page is not found
+        })
+        .Where(item => item != null) // Filter out null items
+        .OrderByDescending(item => item.BlogPage.BlogSingleDate)
         .ToList();
+
+    Console.WriteLine(blogPages);
 }
 
 <!-- Start Blog  -->
@@ -22,19 +51,18 @@
                             {
                                 @foreach (var blogSinglePage in blogPages)
                                 {
-
                                     <div class="col-md-6 col-sm-6">
                                         <article class="aa-blog-single">
                                             <figure class="aa-blog-img">
-                                                <a href="#"><img alt="img" src="@Url.ContentUrl(blogSinglePage.BlogSingleImage)"></a>
-                                                <span class="aa-date-tag">@blogSinglePage.BlogSingleDate.ToString("dd MMMM, yy")</span>
+                                                <a href="#"><img alt="img" src="@Url.ContentUrl(blogSinglePage.BlogPage.BlogSingleImage)"></a>
+                                                <span class="aa-date-tag">@blogSinglePage.BlogPage.BlogSingleDate.ToString("dd MMMM, yy")</span>
                                             </figure>
                                             <div class="aa-blog-single-content">
-                                                <h3><a href="#">@blogSinglePage.BlogSingleTitle</a></h3>
-                                                @Html.PropertyFor(m => blogSinglePage.BlogSingleDescription)
+                                                <h3><a href="#">@blogSinglePage.BlogPage.BlogSingleTitle</a></h3>
+                                                @Html.PropertyFor(m => blogSinglePage.BlogPage.BlogSingleDescription)
                                                 <div class="aa-blog-single-bottom">
-                                                    <a class="aa-blog-author" href="#"><i class="fa fa-user"></i>@blogSinglePage.BlogSingleAuthor</a>
-                                                    <a class="aa-blog-comments" href="#"><i class="fa fa-comment-o"></i>6</a>
+                                                    <a class="aa-blog-author" href="#"><i class="fa fa-user"></i>@blogSinglePage.BlogPage.BlogSingleAuthor</a>
+                                                    <a class="aa-blog-comments" href="#"><i class="fa fa-comment-o"></i>@blogSinglePage.CommentCount</a>
                                                 </div>
                                             </div>
                                         </article>
