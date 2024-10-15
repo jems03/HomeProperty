@@ -1,4 +1,5 @@
-﻿using HomeProperty.Models.Pages;
+﻿using EPiServer.SpecializedProperties;
+using HomeProperty.Models.Pages;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
@@ -8,14 +9,12 @@ namespace HomeProperty.Models.Blocks
         Description = "")]
     public class BlogListingBlock : BlockData
     {
-
-        [CultureSpecific]
+        
         [Display(
             Name = "Blog Pages",
             GroupName = SystemTabNames.Content,
             Order = 1)]
         [AllowedTypes(typeof(BlogSinglePage))]
-        public virtual ContentReference BlogSinglePages { get; set; }
-
+        public virtual IList<ContentReference> BlogSinglePages { get; set; }
     }
 }

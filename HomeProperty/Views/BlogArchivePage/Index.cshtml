@@ -29,7 +29,8 @@
                 <div class="aa-blog-area">
                     <div class="row">
                         <div class="col-md-8">
-                            <div class="aa-blog-content">
+                            @Html.PropertyFor(m => m.CurrentPage.Sections)
+                            @*<div class="aa-blog-content">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6">
                                         <article class="aa-blog-single">
@@ -49,6 +50,7 @@
                                     </div>
 
                                 </div>
+                                <!-- Pagination -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="aa-properties-content-bottom">
@@ -74,7 +76,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> *@
                         </div>
                         <!-- Start blog sidebar -->
                         <div class="col-md-4">

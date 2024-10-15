@@ -28,15 +28,6 @@ namespace HomeProperty.Models.Pages
         [UIHint(UIHint.Image)]
         public virtual Url? MainSectionImageUrl { get; set; }
 
-      
-        [Display(
-            Name = "Blog Listings",
-            Description = "Provide Blog Listings",
-            GroupName = SystemTabNames.Content,
-            Order = 2)]
-       
-        public virtual BlogListingBlock BlogListingPages { get; set; }
-
         //public void FetchBlogDetails()
         //{
         //    if (BlogListingPages != null)
