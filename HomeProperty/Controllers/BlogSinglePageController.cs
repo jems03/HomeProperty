@@ -1,13 +1,10 @@
-﻿using EPiServer;
-using EPiServer.Core;
-using EPiServer.Framework.DataAnnotations;
+﻿using EPiServer.Globalization;
 using EPiServer.Web.Mvc;
+using EPiServer.Web.Routing;
 using HomeProperty.Business.DataStore.BlogSinglePage;
 using HomeProperty.Models.Pages;
 using HomeProperty.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 
 namespace HomeProperty.Controllers
 {
@@ -37,6 +34,32 @@ namespace HomeProperty.Controllers
                 currentPage.BlogComments = blogComments;
             }
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult SaveComment(BlogSinglePage currentPage, IFormCollection formCollection)
+        {
+            var pageUrl = UrlResolver.Current.GetUrl(currentPage.ContentLink, ContentLanguage.PreferredCulture.Name,
+                new VirtualPathArguments { ContextMode = EPiServer.Web.ContextMode.Default });
+
+            string name = formCollection["author"];
+            string email = formCollection["email"];
+            string url = formCollection["url"];
+            string comment = formCollection["Comment"];
+
+            var leaveComment = new BlogComments()
+            {
+                BlogId = (int)TempData["BlogId"],
+                Name = name,
+                EmailAddress = email,
+                Url = url,
+                Comments = comment,
+                CommentDate = DateTime.Now,
+            };
+
+            _commentRepository.SaveComment(leaveComment);
+
+            return Redirect(pageUrl);
         }
     }
 }
