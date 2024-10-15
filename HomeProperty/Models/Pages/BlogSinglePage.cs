@@ -1,4 +1,5 @@
 ﻿using EPiServer.Web;
+using HomeProperty.Business.DataStore.BlogSinglePage;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Pages
@@ -8,6 +9,8 @@ namespace HomeProperty.Models.Pages
         )]
     public class BlogSinglePage : SitePageData
     {
+        private readonly ICommentRepository _commentRepository;
+
         [CultureSpecific]
         [Display(
             Name = "Section Image Url",
@@ -44,27 +47,31 @@ namespace HomeProperty.Models.Pages
 
         [CultureSpecific]
         [Display(
-            Name = "Blog Title",
-            Description = "Blog Title",
+            Name = "Blog Title",        
             GroupName = SystemTabNames.Content,
             Order = 5)]
         public virtual string? BlogSingleTitle { get; set; }
 
         [CultureSpecific]
         [Display(
-            Name = "Blog Description",
-            Description = "Blog Description",
+            Name = "Blog Author",           
             GroupName = SystemTabNames.Content,
             Order = 6)]
+        public virtual string? BlogSingleAuthor { get; set; }
+
+        [CultureSpecific]
+        [Display(
+            Name = "Blog Description",
+            GroupName = SystemTabNames.Content,
+            Order = 7)]
         [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? BlogSingleDescription { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Blog Quote",
-            Description = "Blog Quote",
             GroupName = SystemTabNames.Content,
-            Order = 7)]
+            Order = 8)]
         [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? BlogSingleQuote { get; set; }
 
@@ -73,11 +80,13 @@ namespace HomeProperty.Models.Pages
             Name = "Blog Additional Remarks",
             Description = "Blog Additional Remarks",
             GroupName = SystemTabNames.Content,
-            Order = 8)]
+            Order = 9)]
         [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? BlogSingleAdditionalRemarks { get; set; }
 
 
+        [Ignore]
+        public virtual IList<BlogComments>? BlogComments { get; set; }  
 
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using EPiServer.Cms.TinyMce.Core;
 using EPiServer.Security;
 using HomeProperty.Services;
+using HomeProperty.Business.DataStore.BlogSinglePage;
 
 
 namespace HomeProperty.Extensions
@@ -56,6 +57,9 @@ namespace HomeProperty.Extensions
             //});
 
             services.AddTransient<BlogPostService>();
+
+            //services.AddTransient<IBlogService, BlogListingService>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
 
 
             return services;

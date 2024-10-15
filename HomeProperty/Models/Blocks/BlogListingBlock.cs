@@ -11,12 +11,11 @@ namespace HomeProperty.Models.Blocks
 
         [CultureSpecific]
         [Display(
-            Name = "Name",
-            Description = "Name field's description",
+            Name = "Blog Pages",
             GroupName = SystemTabNames.Content,
             Order = 1)]
         [AllowedTypes(typeof(BlogSinglePage))]
-        public virtual ContentReference? BlogSinglePages { get; set; }
+        public virtual ContentReference BlogSinglePages { get; set; }
 
     }
 }
