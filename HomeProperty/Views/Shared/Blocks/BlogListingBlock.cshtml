@@ -34,8 +34,6 @@
         .Where(item => item != null) // Filter out null items
         .OrderByDescending(item => item.BlogPage.BlogSingleDate)
         .ToList();
-
-    Console.WriteLine(blogPages);
 }
 
 <!-- Start Blog  -->
@@ -54,15 +52,15 @@
                                     <div class="col-md-6 col-sm-6">
                                         <article class="aa-blog-single">
                                             <figure class="aa-blog-img">
-                                                <a href="#"><img alt="img" src="@Url.ContentUrl(blogSinglePage.BlogPage.BlogSingleImage)"></a>
+                                                <a href="@Url.ContentUrl(blogSinglePage.BlogPage.ContentLink)"><img alt="img" src="@Url.ContentUrl(blogSinglePage.BlogPage.BlogSingleImage)"></a>
                                                 <span class="aa-date-tag">@blogSinglePage.BlogPage.BlogSingleDate.ToString("dd MMMM, yy")</span>
                                             </figure>
                                             <div class="aa-blog-single-content">
-                                                <h3><a href="#">@blogSinglePage.BlogPage.BlogSingleTitle</a></h3>
+                                                <h3><a href="@Url.ContentUrl(blogSinglePage.BlogPage.ContentLink)">@blogSinglePage.BlogPage.BlogSingleTitle</a></h3>
                                                 @Html.PropertyFor(m => blogSinglePage.BlogPage.BlogSingleDescription)
                                                 <div class="aa-blog-single-bottom">
-                                                    <a class="aa-blog-author" href="#"><i class="fa fa-user"></i>@blogSinglePage.BlogPage.BlogSingleAuthor</a>
-                                                    <a class="aa-blog-comments" href="#"><i class="fa fa-comment-o"></i>@blogSinglePage.CommentCount</a>
+                                                    <a class="aa-blog-author" href="@Url.ContentUrl(blogSinglePage.BlogPage.ContentLink)"><i class="fa fa-user"></i>@blogSinglePage.BlogPage.BlogSingleAuthor</a>
+                                                    <a class="aa-blog-comments" href="@Url.ContentUrl(blogSinglePage.BlogPage.ContentLink)"><i class="fa fa-comment-o"></i>@blogSinglePage.CommentCount</a>
                                                 </div>
                                             </div>
                                         </article>
