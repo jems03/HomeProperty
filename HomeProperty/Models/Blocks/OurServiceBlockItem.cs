@@ -1,8 +1,4 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
-using EPiServer.Shell.ObjectEditing;
-using System;
+﻿using EPiServer.Shell.ObjectEditing;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks

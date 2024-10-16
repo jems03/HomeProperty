@@ -8,8 +8,7 @@ namespace HomeProperty.Models.Pages
         GUID = "e373312a-7bef-40db-9157-85b47a8d3a10"
         )]
     public class BlogSinglePage : SitePageData
-    {
-        private readonly ICommentRepository _commentRepository;
+    {        
 
         [CultureSpecific]
         [Display(

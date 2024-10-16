@@ -1,15 +1,10 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
-using EPiServer.Web;
-using System;
+﻿using EPiServer.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
 {
     [ContentType(DisplayName = "About Us Block", 
-        GUID = "1d6bd89d-57c4-45eb-b5b0-9b39d59b1030",
-        Description = "")]
+        GUID = "1d6bd89d-57c4-45eb-b5b0-9b39d59b1030")]
     public class AboutUsBlock : BlockData
     {
         [Display(

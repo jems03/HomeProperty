@@ -1,7 +1,4 @@
-﻿using EPiServer.Data;
-using EPiServer.SpecializedProperties;
-using HomeProperty.Business.DataStore.BlogSinglePage;
-using HomeProperty.Models.Pages;
+﻿using HomeProperty.Models.Pages;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
@@ -17,6 +14,6 @@ namespace HomeProperty.Models.Blocks
             Order = 1)]
         [AllowedTypes(typeof(BlogSinglePage))]
         public virtual IList<ContentReference> BlogSinglePages { get; set; }
-
+                 
     }
 }

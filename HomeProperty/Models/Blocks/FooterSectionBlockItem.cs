@@ -1,5 +1,4 @@
-﻿using EPiServer.SpecializedProperties;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
 {
