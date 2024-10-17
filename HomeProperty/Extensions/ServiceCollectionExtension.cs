@@ -10,6 +10,7 @@ using EPiServer.Cms.TinyMce.Core;
 using EPiServer.Security;
 using HomeProperty.Services;
 using HomeProperty.Business.DataStore.BlogSinglePage;
+using HomeProperty.Services.BlogListing;
 
 
 namespace HomeProperty.Extensions
@@ -58,7 +59,7 @@ namespace HomeProperty.Extensions
 
             services.AddTransient<BlogPostService>();
 
-            //services.AddTransient<IBlogService, BlogListingService>();
+            services.AddTransient<IBlogListingService, BlogListingService>();
             services.AddScoped<ICommentRepository, CommentRepository>();
 
 

@@ -3,6 +3,7 @@ using HomeProperty.Business.DataStore.BlogSinglePage;
 using HomeProperty.Models.CustomModels;
 using HomeProperty.Models.Pages;
 using HomeProperty.Models.ViewModels;
+using HomeProperty.Services.BlogListing;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeProperty.Controllers
@@ -11,11 +12,13 @@ namespace HomeProperty.Controllers
     {
         private readonly IContentLoader _contentLoader;
         private readonly ICommentRepository _commentRepository;
+        private readonly IBlogListingService _blogListingService;
 
-        public BlogArchivePageController(IContentLoader contentLoader, ICommentRepository commentRepository)
+        public BlogArchivePageController(IContentLoader contentLoader, ICommentRepository commentRepository, IBlogListingService blogListingService)
         {
             _contentLoader = contentLoader;
             _commentRepository = commentRepository;
+            _blogListingService = blogListingService;
         }
 
         public IActionResult Index(BlogArchivePage currentPage)
@@ -24,35 +27,9 @@ namespace HomeProperty.Controllers
 
             var blogArchive = new ContentReference(currentPage.ContentLink.ID);
 
-#pragma warning disable CS8619 // Nullability of reference types in value doesn't match target type.
-            currentPage.BlogPageWithComments = _contentLoader.GetChildren<PageData>(blogArchive)
-                    .Select(blogPage =>
-                    {
-                        // Fetch the BlogSinglePage using the ContentLink
-                        var page = _contentLoader.Get<BlogSinglePage>(blogPage.ContentLink);
 
-                        if (page != null)
-                        {
-                            // Populate the comments from Dynamic Data Store
-                            var allComments = _commentRepository.GetAllComments();
+            currentPage.BlogPageWithComments = _blogListingService.GetAllBlogPages(blogArchive);
 
-                            // Get comments for the current blog page
-                            var blogComments = allComments.Where(m => m.BlogId == page.ContentLink.ID).ToList();
-
-                            // Return a new instance of BlogPageWithComments with the blog page and comment count
-                            return new BlogPageWithComments
-                            {
-                                BlogPage = page,
-                                CommentCount = blogComments.Count
-                            };
-                        }
-
-                        return null; // Return null if the page is not found
-                    })
-                    .Where(item => item != null) // Filter out null items
-                    .OrderByDescending(item => item.BlogPage.StartPublish) // Sort by StartPublish (or use BlogSingleDate if needed)
-                    .ToList();
-#pragma warning restore CS8619 // Nullability of reference types in value doesn't match target type.
 
             return View(model);
         }

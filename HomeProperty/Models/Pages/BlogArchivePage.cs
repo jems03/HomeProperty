@@ -18,13 +18,12 @@ namespace HomeProperty.Models.Pages
         [UIHint(UIHint.Image)]
         public virtual Url? MainSectionImageUrl { get; set; }
 
-        [Display(
-            Name = "Blog Pages",
-            GroupName = SystemTabNames.Content,
-            Order = 2)]
-        [AllowedTypes(typeof(BlogSinglePage))]
-        public virtual IList<ContentReference>? BlogSinglePages { get; set; }
-
+        //[Display(
+        //    Name = "Blog Pages",
+        //    GroupName = SystemTabNames.Content,
+        //    Order = 2)]
+        //[AllowedTypes(typeof(BlogSinglePage))]
+        //public virtual IList<ContentReference>? BlogSinglePages { get; set; }
 
         [Ignore]
         public virtual IList<BlogPageWithComments>? BlogPageWithComments { get; set; }
