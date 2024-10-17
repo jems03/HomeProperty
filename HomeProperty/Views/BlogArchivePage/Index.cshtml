@@ -1,6 +1,4 @@
 ﻿@model IPageViewModel<BlogArchivePage>
-@inject EPiServer.IContentLoader _contentLoader
-@inject HomeProperty.Business.DataStore.BlogSinglePage.ICommentRepository _commentRepository
 
 @{
     // var blogPages = Model.BlogSinglePages
@@ -9,30 +7,52 @@
     //     .OrderByDescending(blogPage => blogPage.BlogSingleDate)
     //     .ToList();
 
-    var blogPages = Model.CurrentPage.BlogSinglePages
-        .Select(blogPage =>
-        {
-            var page = _contentLoader.Get<BlogSinglePage>(blogPage);
-            if (page != null)
-            {
-                // Populate the comments from Dynamic Data Store
-                var allComments = _commentRepository.GetAllComments();
+    // var blogPages = Model.CurrentPage.BlogSinglePages
+    //     .Select(blogPage =>
+    //     {
+    //         var page = _contentLoader.Get<BlogSinglePage>(blogPage);
+    //         if (page != null)
+    //         {
+    //             // Populate the comments from Dynamic Data Store
+    //             var allComments = _commentRepository.GetAllComments();
 
-                // Get comments for the current blog page
-                var blogComments = allComments.Where(m => m.BlogId == page.ContentLink.ID).ToList();
+    //             // Get comments for the current blog page
+    //             var blogComments = allComments.Where(m => m.BlogId == page.ContentLink.ID).ToList();
 
-                // Return an anonymous type with the blog page and comment count
-                return new
-                {
-                    BlogPage = page,
-                    CommentCount = blogComments.Count
-                };
-            }
-            return null;
-        })
-        .Where(item => item != null) // Filter out null items
-        .OrderByDescending(item => item.BlogPage.BlogSingleDate)
-        .ToList();
+    //             // Return an anonymous type with the blog page and comment count
+    //             return new
+    //             {
+    //                 BlogPage = page,
+    //                 CommentCount = blogComments.Count
+    //             };
+    //         }
+    //         return null;
+    //     })
+    //     .Where(item => item != null) // Filter out null items
+    //     .OrderByDescending(item => item.BlogPage.BlogSingleDate)
+    //     .ToList();
+
+    // var BlogArchive = new ContentReference(120);
+
+    // // Fetch the children of the specified page (BlogArchivePage)
+    // var childPages = _contentLoader.GetChildren<PageData>(BlogArchive);
+
+    // foreach(var blogPage in childPages)
+    // {
+    //     var page = _contentLoader.Get<BlogSinglePage>(blogPage.ContentLink);
+
+    //     Console.WriteLine(page);
+    // }    
+
+    // var childPages2 = _contentLoader.GetChildren<PageData>(BlogArchive)
+    // .Select(blogPage => _contentLoader.Get<BlogSinglePage>(blogPage.ContentLink))
+    // .Where(page => page != null) // Ensure the page is not null
+    // .OrderByDescending(page => page.BlogSingleDate) // Sort by BlogSingleDate in descending order
+    // .ToList();
+
+
+    // Console.WriteLine(childPages);
+    // Console.WriteLine(childPages2);
 
 }
 
@@ -53,7 +73,6 @@
     </div>
 </section>
 <!-- End Property header  -->
-
 <!-- Start Blog -->
 <section id="aa-blog">
     <div class="container">
@@ -64,9 +83,9 @@
                         <div class="col-md-8">
                             <div class="aa-blog-content">
                                 <div class="row">
-                                    @if (blogPages != null && blogPages.Count() > 0)
+                                    @if (Model.CurrentPage.BlogPageWithComments != null && Model.CurrentPage.BlogPageWithComments.Count() > 0)
                                     {
-                                        @foreach (var blogSinglePage in blogPages)
+                                        @foreach (var blogSinglePage in Model.CurrentPage.BlogPageWithComments)
                                         {
                                             <div class="col-md-6 col-sm-6">
                                                 <article class="aa-blog-single">
@@ -86,12 +105,6 @@
                                             </div>
                                         }
                                     }
-
-                                    
-                                    
-                                    
-                                   
-                                   
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -173,42 +186,33 @@
                                 <div class="aa-blog-sidebar-single">
                                     <h3>Recent Post</h3>
                                     <div class="aa-blog-recent-post">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img alt="img" src="img/blog-img-3.jpg" class="media-object">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading"><a href="#">This is Title</a></h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                <span>15 April, 16</span>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img alt="img" src="img/blog-img-2.jpg" class="media-object">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading"><a href="#">This is Title</a></h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                <span>15 April, 16</span>
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <a href="#">
-                                                    <img alt="img" src="img/blog-img-1.jpg" class="media-object">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <h4 class="media-heading"><a href="#">This is Title</a></h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                                <span>15 April, 16</span>
-                                            </div>
-                                        </div>
+
+                                        @if (Model.CurrentPage.BlogPageWithComments != null || Model.CurrentPage.BlogPageWithComments.Count() > 0)
+                                        {
+                                            foreach (var recent in Model.CurrentPage.BlogPageWithComments)
+                                            {
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img alt="img" src="@Url.ContentUrl(recent.BlogPage.BlogSingleImage)" class="media-object">
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h4 class="media-heading"><a href="@Url.ContentUrl(recent.BlogPage.ContentLink)">@recent.BlogPage.BlogSingleTitle</a></h4>
+                                                        @Html.PropertyFor(m => recent.BlogPage.BlogSingleDescription)
+                                                        <span>@recent.BlogPage.BlogSingleDate.ToString("dd MMMM, yy")</span>
+                                                    </div>
+                                                </div>
+                                            }
+
+
+
+
+                                        }
+
+
+
+
                                     </div>
                                 </div>
                                 <!-- Start single sidebar -->

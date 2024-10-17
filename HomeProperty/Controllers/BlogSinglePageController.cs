@@ -10,10 +10,11 @@ namespace HomeProperty.Controllers
 {
     public class BlogSinglePageController : PageController<BlogSinglePage>
     {
+
         private readonly ICommentRepository _commentRepository;
 
-        public BlogSinglePageController(ICommentRepository commentRepository)
-        {
+        public BlogSinglePageController( ICommentRepository commentRepository)
+        {         
             _commentRepository = commentRepository;
         }
 

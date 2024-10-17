@@ -1,4 +1,5 @@
 ﻿using EPiServer.Web;
+using HomeProperty.Models.CustomModels;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Pages
@@ -22,7 +23,11 @@ namespace HomeProperty.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 2)]
         [AllowedTypes(typeof(BlogSinglePage))]
-        public virtual IList<ContentReference> BlogSinglePages { get; set; }
+        public virtual IList<ContentReference>? BlogSinglePages { get; set; }
+
+
+        [Ignore]
+        public virtual IList<BlogPageWithComments>? BlogPageWithComments { get; set; }
 
     }
 }
