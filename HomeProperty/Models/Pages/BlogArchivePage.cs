@@ -15,7 +15,14 @@ namespace HomeProperty.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 1)]
         [UIHint(UIHint.Image)]
-        public virtual Url? MainSectionImageUrl { get; set; }        
+        public virtual Url? MainSectionImageUrl { get; set; }
+
+        [Display(
+            Name = "Blog Pages",
+            GroupName = SystemTabNames.Content,
+            Order = 2)]
+        [AllowedTypes(typeof(BlogSinglePage))]
+        public virtual IList<ContentReference> BlogSinglePages { get; set; }
 
     }
 }

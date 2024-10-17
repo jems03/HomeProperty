@@ -1,47 +1,35 @@
-﻿using EPiServer.ServiceLocation;
-using HomeProperty.Models.Blocks;
-using HomeProperty.Models.Pages;
-
-namespace HomeProperty.Services
+﻿namespace HomeProperty.Services
 {
-    //public interface IBlogService
-    //{
-    //    void FetchBlogDetails(BlogListingBlock blogListingBlock);
-    //}
+    public class BlogListingService
+    {
+        private readonly IContentLoader _contentLoader;
 
-    //[ServiceConfiguration(typeof(IBlogService))]
-    //public class BlogListingService : IBlogService
-    //{
-    //    private readonly IContentLoader _contentLoader;
+        public BlogListingService(IContentLoader contentLoader)
+        {
+            _contentLoader = contentLoader;
+        }
 
-    //    public BlogListingService(IContentLoader contentLoader)
-    //    {
-    //        _contentLoader = contentLoader;
-    //    }
+        public IEnumerable<PageData> GetPageTree(ContentReference contentReference)
+        {
+            var pages = new List<PageData>();
 
-    //    public void FetchBlogDetails(BlogListingBlock blogListingBlock)
-    //    {
-    //        var blogSinglePageReference = blogListingBlock.BlogSinglePages;
+            GetPagesRecursively(contentReference, pages);
 
-    //        if (blogSinglePageReference != null && blogSinglePageReference.Any())
-    //        {
-    //            foreach (var blogPage in blogSinglePageReference)
-    //            {
-    //                if (blogSinglePageReference != null)
-    //                {
-    //                    // Fetch each blog page using the content loader
-    //                    var blogSinglePage = _contentLoader.Get<BlogSinglePage>(blogPage);
+            return pages;
+        }
 
-    //                    // Process the blog page details (like Title, Publish Date, etc.)
-    //                    Console.WriteLine(blogSinglePage);
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Console.WriteLine("No blog pages found.");
-    //        }
+        private void GetPagesRecursively(ContentReference contentReference, List<PageData> pages)
+        {
+            var children = _contentLoader.GetChildren<PageData>(contentReference);
 
-    //    }
-    //}
+            foreach (var child in children)
+            {
+                pages.Add(child);
+
+                GetPagesRecursively(child.ContentLink, pages);
+            }
+
+        }
+
+    }
 }

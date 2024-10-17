@@ -1,7 +1,39 @@
 ﻿@model IPageViewModel<BlogArchivePage>
+@inject EPiServer.IContentLoader _contentLoader
+@inject HomeProperty.Business.DataStore.BlogSinglePage.ICommentRepository _commentRepository
 
 @{
-    // Model.CurrentPage.FetchBlogDetails();
+    // var blogPages = Model.BlogSinglePages
+    //     .Select(blogPage => _contentLoader.Get<BlogSinglePage>(blogPage))
+    //     .Where(blogPage => blogPage != null)
+    //     .OrderByDescending(blogPage => blogPage.BlogSingleDate)
+    //     .ToList();
+
+    var blogPages = Model.CurrentPage.BlogSinglePages
+        .Select(blogPage =>
+        {
+            var page = _contentLoader.Get<BlogSinglePage>(blogPage);
+            if (page != null)
+            {
+                // Populate the comments from Dynamic Data Store
+                var allComments = _commentRepository.GetAllComments();
+
+                // Get comments for the current blog page
+                var blogComments = allComments.Where(m => m.BlogId == page.ContentLink.ID).ToList();
+
+                // Return an anonymous type with the blog page and comment count
+                return new
+                {
+                    BlogPage = page,
+                    CommentCount = blogComments.Count
+                };
+            }
+            return null;
+        })
+        .Where(item => item != null) // Filter out null items
+        .OrderByDescending(item => item.BlogPage.BlogSingleDate)
+        .ToList();
+
 }
 
 <!-- Start Property header  -->
@@ -22,6 +54,7 @@
 </section>
 <!-- End Property header  -->
 
+<!-- Start Blog -->
 <section id="aa-blog">
     <div class="container">
         <div class="row">
@@ -29,28 +62,37 @@
                 <div class="aa-blog-area">
                     <div class="row">
                         <div class="col-md-8">
-                            @Html.PropertyFor(m => m.CurrentPage.Sections)
-                            @*<div class="aa-blog-content">
+                            <div class="aa-blog-content">
                                 <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <article class="aa-blog-single">
-                                            <figure class="aa-blog-img">
-                                                <a href="#"><img alt="img" src="img/blog-img-1.jpg"></a>
-                                                <span class="aa-date-tag">15 April, 16</span>
-                                            </figure>
-                                            <div class="aa-blog-single-content">
-                                                <h3><a href="#">Lorem ipsum dolor sit amet, consectetur.</a></h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio est quaerat magnam exercitationem voluptas, voluptatem sed quam ab laborum voluptatum tempore dolores itaque, molestias vitae.</p>
-                                                <div class="aa-blog-single-bottom">
-                                                    <a class="aa-blog-author" href="#"><i class="fa fa-user"></i> Admin</a>
-                                                    <a class="aa-blog-comments" href="#"><i class="fa fa-comment-o"></i>6</a>
-                                                </div>
+                                    @if (blogPages != null && blogPages.Count() > 0)
+                                    {
+                                        @foreach (var blogSinglePage in blogPages)
+                                        {
+                                            <div class="col-md-6 col-sm-6">
+                                                <article class="aa-blog-single">
+                                                    <figure class="aa-blog-img">
+                                                        <a href="@Url.ContentUrl(blogSinglePage.BlogPage.ContentLink)"><img alt="img" src="@Url.ContentUrl(blogSinglePage.BlogPage.BlogSingleImage)"></a>
+                                                        <span class="aa-date-tag">@blogSinglePage.BlogPage.BlogSingleDate.ToString("dd MMMM, yy")</span>
+                                                    </figure>
+                                                    <div class="aa-blog-single-content">
+                                                        <h3><a href="@Url.ContentUrl(blogSinglePage.BlogPage.ContentLink)">@blogSinglePage.BlogPage.BlogSingleTitle</a></h3>
+                                                        @Html.PropertyFor(m => blogSinglePage.BlogPage.BlogSingleDescription)
+                                                        <div class="aa-blog-single-bottom">
+                                                            <a class="aa-blog-author" href="@Url.ContentUrl(blogSinglePage.BlogPage.ContentLink)"><i class="fa fa-user"></i>@blogSinglePage.BlogPage.BlogSingleAuthor</a>
+                                                            <a class="aa-blog-comments" href="@Url.ContentUrl(blogSinglePage.BlogPage.ContentLink)"><i class="fa fa-comment-o"></i>@blogSinglePage.CommentCount</a>
+                                                        </div>
+                                                    </div>
+                                                </article>
                                             </div>
-                                        </article>
-                                    </div>
+                                        }
+                                    }
 
+                                    
+                                    
+                                    
+                                   
+                                   
                                 </div>
-                                <!-- Pagination -->
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="aa-properties-content-bottom">
@@ -76,7 +118,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> *@
+                            </div>
                         </div>
                         <!-- Start blog sidebar -->
                         <div class="col-md-4">
@@ -134,7 +176,7 @@
                                         <div class="media">
                                             <div class="media-left">
                                                 <a href="#">
-                                                    <img alt="img" src="/img/blog-img-3.jpg" class="media-object">
+                                                    <img alt="img" src="img/blog-img-3.jpg" class="media-object">
                                                 </a>
                                             </div>
                                             <div class="media-body">
@@ -146,7 +188,7 @@
                                         <div class="media">
                                             <div class="media-left">
                                                 <a href="#">
-                                                    <img alt="img" src="/img/blog-img-2.jpg" class="media-object">
+                                                    <img alt="img" src="img/blog-img-2.jpg" class="media-object">
                                                 </a>
                                             </div>
                                             <div class="media-body">
@@ -158,7 +200,7 @@
                                         <div class="media">
                                             <div class="media-left">
                                                 <a href="#">
-                                                    <img alt="img" src="/img/blog-img-1.jpg" class="media-object">
+                                                    <img alt="img" src="img/blog-img-1.jpg" class="media-object">
                                                 </a>
                                             </div>
                                             <div class="media-body">
@@ -173,7 +215,7 @@
                                 <div class="aa-blog-sidebar-single">
                                     <div class="aa-banner-ads">
                                         <a href="#">
-                                            <img src="/img/banner-ads.jpg" alt="banner img">
+                                            <img src="img/banner-ads.jpg" alt="banner img">
                                         </a>
                                     </div>
                                 </div>
@@ -185,3 +227,4 @@
         </div>
     </div>
 </section>
+<!-- End Blog -->
