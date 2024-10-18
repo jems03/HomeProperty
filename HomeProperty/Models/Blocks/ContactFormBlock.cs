@@ -8,7 +8,6 @@ namespace HomeProperty.Models.Blocks
         Description = "")]
     public class ContactFormBlock : BlockData
     {
-
         [CultureSpecific]
         [Display(
             Name = "Contact Form Reference",

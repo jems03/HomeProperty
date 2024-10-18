@@ -1,16 +1,13 @@
-﻿using EPiServer.Cms.TinyMce.PropertySettings.Internal;
-using EPiServer.Labs.ContentManager;
+﻿using EPiServer.Labs.ContentManager;
 using EPiServer.Web;
 using HomeProperty.Business;
 using HomeProperty.Business.Channels;
+using HomeProperty.Business.DataStore.BlogSinglePage;
 using HomeProperty.Business.Rendering;
+using HomeProperty.Services;
+using HomeProperty.Services.BlogListing;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
-using EPiServer.Cms.TinyMce.Core;
-using EPiServer.Security;
-using HomeProperty.Services;
-using HomeProperty.Business.DataStore.BlogSinglePage;
-using HomeProperty.Services.BlogListing;
 
 
 namespace HomeProperty.Extensions

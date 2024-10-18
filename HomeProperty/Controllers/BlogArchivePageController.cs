@@ -1,6 +1,5 @@
 ﻿using EPiServer.Web.Mvc;
 using HomeProperty.Business.DataStore.BlogSinglePage;
-using HomeProperty.Models.CustomModels;
 using HomeProperty.Models.Pages;
 using HomeProperty.Models.ViewModels;
 using HomeProperty.Services.BlogListing;
@@ -27,9 +26,7 @@ namespace HomeProperty.Controllers
 
             var blogArchive = new ContentReference(currentPage.ContentLink.ID);
 
-
             currentPage.BlogPageWithComments = _blogListingService.GetAllBlogPages(blogArchive);
-
 
             return View(model);
         }

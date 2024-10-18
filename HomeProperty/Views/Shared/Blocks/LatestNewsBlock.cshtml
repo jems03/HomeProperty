@@ -1,0 +1,57 @@
+﻿@using EPiServer
+@model LatestNewsBlock
+@inject HomeProperty.Services.BlogListing.IBlogListingService _blogListingService
+
+@if (Model.BlogArchivePage != null)
+{
+    // Fetch the latest blogs using the injected service
+    var latestBlogs = _blogListingService.GetLatestBlogPages(Model.BlogArchivePage);
+
+    Console.WriteLine(latestBlogs);
+
+    <section id="aa-latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="aa-latest-blog-area">
+                        <div class="aa-latest-blog-content">
+                            <div class="row">
+                                @if (latestBlogs != null)
+                                {
+                                    @foreach (var blogList in latestBlogs)
+                                    {
+                                        <div class="col-md-4">
+                                            <article class="aa-blog-single">
+                                                <figure class="aa-blog-img">
+                                                    <a href="@Url.ContentUrl(blogList.BlogPage.ContentLink)"><img src="@Url.ContentUrl(blogList.BlogPage.BlogSingleImage)" alt="img"></a>
+                                                    <span class="aa-date-tag">@blogList.BlogPage.BlogSingleDate.ToString("dd MMMM, yy")</span>
+                                                </figure>
+                                                <div class="aa-blog-single-content">
+                                                    <h3><a href="@Url.ContentUrl(blogList.BlogPage.ContentLink)">@blogList.BlogPage.BlogSingleTitle</a></h3>
+                                                    @Html.PropertyFor(m => blogList.BlogPage.BlogSingleDescription)                                                    
+                                                    <div class="aa-blog-single-bottom">
+                                                        <a href="@Url.ContentUrl(blogList.BlogPage.ContentLink)" class="aa-blog-author"><i class="fa fa-user"></i>@blogList.BlogPage.BlogSingleAuthor</a>
+                                                        <a href="@Url.ContentUrl(blogList.BlogPage.ContentLink)" class="aa-blog-comments"><i class="fa fa-comment-o"></i>@blogList.CommentCount</a>
+                                                    </div>
+                                                </div>
+
+                                            </article>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>No latest blogs found.</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <p>Blog Archive Page is not set.</p>
+}

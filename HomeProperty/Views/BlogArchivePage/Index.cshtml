@@ -1,61 +1,5 @@
 ﻿@model IPageViewModel<BlogArchivePage>
 
-@{
-    // var blogPages = Model.BlogSinglePages
-    //     .Select(blogPage => _contentLoader.Get<BlogSinglePage>(blogPage))
-    //     .Where(blogPage => blogPage != null)
-    //     .OrderByDescending(blogPage => blogPage.BlogSingleDate)
-    //     .ToList();
-
-    // var blogPages = Model.CurrentPage.BlogSinglePages
-    //     .Select(blogPage =>
-    //     {
-    //         var page = _contentLoader.Get<BlogSinglePage>(blogPage);
-    //         if (page != null)
-    //         {
-    //             // Populate the comments from Dynamic Data Store
-    //             var allComments = _commentRepository.GetAllComments();
-
-    //             // Get comments for the current blog page
-    //             var blogComments = allComments.Where(m => m.BlogId == page.ContentLink.ID).ToList();
-
-    //             // Return an anonymous type with the blog page and comment count
-    //             return new
-    //             {
-    //                 BlogPage = page,
-    //                 CommentCount = blogComments.Count
-    //             };
-    //         }
-    //         return null;
-    //     })
-    //     .Where(item => item != null) // Filter out null items
-    //     .OrderByDescending(item => item.BlogPage.BlogSingleDate)
-    //     .ToList();
-
-    // var BlogArchive = new ContentReference(120);
-
-    // // Fetch the children of the specified page (BlogArchivePage)
-    // var childPages = _contentLoader.GetChildren<PageData>(BlogArchive);
-
-    // foreach(var blogPage in childPages)
-    // {
-    //     var page = _contentLoader.Get<BlogSinglePage>(blogPage.ContentLink);
-
-    //     Console.WriteLine(page);
-    // }    
-
-    // var childPages2 = _contentLoader.GetChildren<PageData>(BlogArchive)
-    // .Select(blogPage => _contentLoader.Get<BlogSinglePage>(blogPage.ContentLink))
-    // .Where(page => page != null) // Ensure the page is not null
-    // .OrderByDescending(page => page.BlogSingleDate) // Sort by BlogSingleDate in descending order
-    // .ToList();
-
-
-    // Console.WriteLine(childPages);
-    // Console.WriteLine(childPages2);
-
-}
-
 <!-- Start Property header  -->
 <section id="aa-property-header" style="background-image:url(@Url.ContentUrl(Model.CurrentPage.MainSectionImageUrl))">
     <div class="container">
@@ -205,13 +149,7 @@
                                                 </div>
                                             }
 
-
-
-
                                         }
-
-
-
 
                                     </div>
                                 </div>
