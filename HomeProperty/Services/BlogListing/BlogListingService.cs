@@ -18,6 +18,7 @@ namespace HomeProperty.Services.BlogListing
         public IList<BlogPageWithComments> GetAllBlogPages(ContentReference blogArchive)
         {
             var getAllBlogs = _contentLoader.GetChildren<PageData>(blogArchive)
+                    .Where(blogPage => blogPage is BlogSinglePage)
                     .Select(blogPage =>
                     {
                         // Fetch the BlogSinglePage using the ContentLink
@@ -51,6 +52,7 @@ namespace HomeProperty.Services.BlogListing
         public IList<BlogPageWithComments> GetLatestBlogPages(ContentReference blogArchive)
         {
             var getLatestBlogs = _contentLoader.GetChildren<PageData>(blogArchive)
+                     .Where(blogPage => blogPage is BlogSinglePage)
                      .Select(blogPage =>
                      {
                          // Fetch the BlogSinglePage using the ContentLink

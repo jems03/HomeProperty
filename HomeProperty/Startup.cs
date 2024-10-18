@@ -1,12 +1,9 @@
 using EPiServer.Cms.Shell;
-using EPiServer.Cms.TinyMce.PropertySettings.Internal;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
-using HomeProperty.Business;
 using HomeProperty.Extensions;
-using Microsoft.AspNetCore.Mvc;
 
 namespace HomeProperty
 {

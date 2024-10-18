@@ -21,11 +21,11 @@ namespace HomeProperty.Models.Pages
 
         [CultureSpecific]
         [Display(
-           Name = "Right Side Bar",
-           Description = "Add right side sections",
+           Name = "Blog Side Bar",
            GroupName = SystemTabNames.Content,
            Order = 2)]
-        public virtual ContentArea? SideBarSections { get; set; }
+        [AllowedTypes(typeof(BlogSidebarPage))]
+        public virtual ContentArea? BlogSideBar { get; set; }
         
         [CultureSpecific]
         [Display(

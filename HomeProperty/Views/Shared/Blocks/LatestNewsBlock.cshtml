@@ -1,5 +1,4 @@
-﻿@using EPiServer
-@model LatestNewsBlock
+﻿@model LatestNewsBlock
 @inject HomeProperty.Services.BlogListing.IBlogListingService _blogListingService
 
 @if (Model.BlogArchivePage != null)
@@ -7,9 +6,6 @@
     // Fetch the latest blogs using the injected service
     var latestBlogs = _blogListingService.GetLatestBlogPages(Model.BlogArchivePage);
 
-    Console.WriteLine(latestBlogs);
-
-    <section id="aa-latest-blog">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -49,7 +45,6 @@
                 </div>
             </div>
         </div>
-    </section>
 }
 else
 {
