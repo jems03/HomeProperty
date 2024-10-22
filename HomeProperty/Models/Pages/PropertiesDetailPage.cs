@@ -82,7 +82,7 @@ namespace HomeProperty.Models.Pages
             GroupName = SystemTabNames.Content,
             Order = 9)]
         public virtual int PropertyNumberOfBeds { get; set; }
-
+      
         [CultureSpecific]
         [Display(
             Name = "Number of Baths",
@@ -92,9 +92,16 @@ namespace HomeProperty.Models.Pages
 
         [CultureSpecific]
         [Display(
-            Name = "Property Features List",
+            Name = "Property Size (in Square Feet)",
             GroupName = SystemTabNames.Content,
             Order = 11)]
+        public virtual int PropertySize { get; set; }
+
+        [CultureSpecific]
+        [Display(
+            Name = "Property Features List",
+            GroupName = SystemTabNames.Content,
+            Order = 12)]
         [SelectMany(SelectionFactoryType = typeof(PropertyFeaturesSelection))]
         [UIHint("StringsCollection")]
         public virtual string PropertyFeaturesList { get; set; }
@@ -102,14 +109,14 @@ namespace HomeProperty.Models.Pages
         [Display(
             Name = "Property Video",
             GroupName = SystemTabNames.Content,
-            Order = 12)]
+            Order = 13)]
         [UIHint(UIHint.Textarea)]
         public virtual string PropertyVideo { get; set; }
 
         [Display(
             Name = "Property Map Coordinates",
             GroupName = SystemTabNames.Content,
-            Order = 13)]
+            Order = 14)]
         [UIHint(UIHint.Textarea)]
         public virtual string PropertyMapCoordinates { get; set; }
 

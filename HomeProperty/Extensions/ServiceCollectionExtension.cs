@@ -6,6 +6,8 @@ using HomeProperty.Business.DataStore.BlogSinglePage;
 using HomeProperty.Business.Rendering;
 using HomeProperty.Services;
 using HomeProperty.Services.BlogListing;
+using HomeProperty.Services.PropertiesList;
+using HomeProperty.Services.PropertiesListing;
 using HomeProperty.Services.SiteMap;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -40,6 +42,7 @@ namespace HomeProperty.Extensions
 
             services.TryAddTransient<IBlogListingService, BlogListingService>();
             services.TryAddTransient<ICommentRepository, CommentRepository>();
+            services.TryAddTransient<IPropertiesListingService, PropertiesListingService>();
 
 
             return services;
