@@ -24,7 +24,6 @@ namespace HomeProperty.SelectionFactories
                 {
                     yield return new SelectItem() { Text = subcategory.Description, Value = subcategory.Name };
                 }
-
             }
             else
             {
