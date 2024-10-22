@@ -34,5 +34,10 @@ namespace HomeProperty
             public const string NoRenderer = "norenderer";
         }
 
+        public static class CmsCategories
+        {
+            public const string PropertyFeatures = "Property Features";
+        }
+
     }
 }
