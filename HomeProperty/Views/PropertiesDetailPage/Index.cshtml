@@ -7,7 +7,7 @@
 
 <!-- Start Proerty header  -->
 
-<section id="aa-property-header">
+<section id="aa-property-header" style="background-image:url(@Url.ContentUrl(Model.CurrentPage.MainSectionImageUrl))>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -56,7 +56,7 @@
                             } *@
 
 
-                            <span class="aa-price">$ @Html.PropertyFor(m => m.CurrentPage.PropertyPrice)</span>
+                            <span class="aa-price">@Html.DisplayFor(m => m.CurrentPage.PropertyPrice, "PropertyPrice")</span>
                             @Html.PropertyFor(m => m.CurrentPage.PropertyDescription)
 
                             <h4>Property Features</h4>
@@ -86,8 +86,6 @@
                                         <li>@features</li>
                                     }
                                 }
-
-
 
                             </ul>
 

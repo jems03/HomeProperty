@@ -13,12 +13,21 @@ namespace HomeProperty.Models.Pages
     [ContentType(DisplayName = "Properties Detail Page", 
         GUID = "57241ce0-87a7-4761-8e06-b986ba763c58")]
     public class PropertiesDetailPage : SitePageData
-    {      
+    {
+        [CultureSpecific]
+        [Display(
+             Name = "Section Image Url",
+             Description = "Select section image",
+             GroupName = SystemTabNames.Content,
+             Order = 1)]
+        [UIHint(UIHint.Image)]
+        public virtual Url? MainSectionImageUrl { get; set; }
+
         [CultureSpecific]
         [Display(
              Name = "Property Type",
              GroupName = SystemTabNames.Content,
-             Order = 1)]
+             Order = 2)]
         [SelectOne(SelectionFactoryType = typeof(PropertyTypeSelection))]
         public virtual string PropertyType { get; set; }
 
@@ -26,7 +35,7 @@ namespace HomeProperty.Models.Pages
         [Display(
              Name = "Property Status",
              GroupName = SystemTabNames.Content,
-             Order = 2)]
+             Order = 3)]
         [SelectOne(SelectionFactoryType = typeof(PropertyStatusSelection))]
         public virtual string PropertyStatus { get; set; }
 
@@ -34,59 +43,58 @@ namespace HomeProperty.Models.Pages
         [Display(
              Name = "Property Image",
              GroupName = SystemTabNames.Content,
-             Order = 3)]
+             Order = 4)]
         [UIHint(UIHint.Image)]
         public virtual IList<Url> PropertyImages { get; set; }
 
         [CultureSpecific]
         [Display(
-        Name = "Property Name",  // Updated Name for this page
-        Description = "Originally a MetaTitle but accustomed for Properties Detail",
-        GroupName = SystemTabNames.Content,
-        Order = 4)]
+             Name = "Property Name",  // Updated Name for this page
+             Description = "Originally a MetaTitle but accustomed for Properties Detail",
+             GroupName = SystemTabNames.Content,
+             Order = 5)]
         public override string? MetaTitle { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Property Price",
             GroupName = SystemTabNames.Content,
-            Order = 5)]
-        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = false)]
-        public virtual string PropertyPrice { get; set; }
+            Order = 6)]
+        public virtual int PropertyPrice { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Property Description",
             GroupName = SystemTabNames.Content,
-            Order = 6)]
+            Order = 7)]
         public virtual XhtmlString PropertyDescription { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Number of Rooms",
             GroupName = SystemTabNames.Content,
-            Order = 7)]
+            Order = 8)]
         public virtual int PropertyNumberOfRooms { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Number of Beds",
             GroupName = SystemTabNames.Content,
-            Order = 8)]
+            Order = 9)]
         public virtual int PropertyNumberOfBeds { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Number of Baths",
             GroupName = SystemTabNames.Content,
-            Order = 9)]
+            Order = 10)]
         public virtual int PropertyNumberOfBaths { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Property Features List",
             GroupName = SystemTabNames.Content,
-            Order = 10)]
+            Order = 11)]
         [SelectMany(SelectionFactoryType = typeof(PropertyFeaturesSelection))]
         [UIHint("StringsCollection")]
         public virtual string PropertyFeaturesList { get; set; }
@@ -94,14 +102,14 @@ namespace HomeProperty.Models.Pages
         [Display(
             Name = "Property Video",
             GroupName = SystemTabNames.Content,
-            Order = 11)]
+            Order = 12)]
         [UIHint(UIHint.Textarea)]
         public virtual string PropertyVideo { get; set; }
 
         [Display(
             Name = "Property Map Coordinates",
             GroupName = SystemTabNames.Content,
-            Order = 12)]
+            Order = 13)]
         [UIHint(UIHint.Textarea)]
         public virtual string PropertyMapCoordinates { get; set; }
 
