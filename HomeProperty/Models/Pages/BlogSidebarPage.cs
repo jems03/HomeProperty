@@ -7,10 +7,10 @@ namespace HomeProperty.Models.Pages
     public class BlogSidebarPage : PageData
     {
         [Display(
-        Name = "Blog Archive Page",
-        Description = "Select the blog archive page to fetch blog posts from",
-        GroupName = SystemTabNames.Content,
-        Order = 1)]
+            Name = "Blog Archive Page",
+            Description = "Select the blog archive page to fetch blog posts from",
+            GroupName = SystemTabNames.Content,
+            Order = 1)]
         [AllowedTypes(typeof(BlogArchivePage))]
         public virtual ContentReference BlogArchivePage { get; set; }
     }

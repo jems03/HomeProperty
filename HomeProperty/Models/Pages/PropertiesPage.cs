@@ -21,7 +21,7 @@ namespace HomeProperty.Models.Pages
            Name = "Properties Side Bar",
            GroupName = SystemTabNames.Content,
            Order = 2)]
-        //[AllowedTypes(typeof(BlogSidebarPage))]
+        [AllowedTypes(typeof(PropertiesSideBarPage))]
         public virtual ContentArea? PropertiesSideBar { get; set; }
 
         [Ignore]

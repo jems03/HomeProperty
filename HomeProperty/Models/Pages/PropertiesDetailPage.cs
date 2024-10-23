@@ -25,9 +25,17 @@ namespace HomeProperty.Models.Pages
 
         [CultureSpecific]
         [Display(
+           Name = "Properties Side Bar",
+           GroupName = SystemTabNames.Content,
+           Order = 2)]
+        [AllowedTypes(typeof(PropertiesSideBarPage))]
+        public virtual ContentArea? PropertiesSideBar { get; set; }
+
+        [CultureSpecific]
+        [Display(
              Name = "Property Type",
              GroupName = SystemTabNames.Content,
-             Order = 2)]
+             Order = 3)]
         [SelectOne(SelectionFactoryType = typeof(PropertyTypeSelection))]
         public virtual string PropertyType { get; set; }
 
@@ -35,7 +43,7 @@ namespace HomeProperty.Models.Pages
         [Display(
              Name = "Property Status",
              GroupName = SystemTabNames.Content,
-             Order = 3)]
+             Order = 4)]
         [SelectOne(SelectionFactoryType = typeof(PropertyStatusSelection))]
         public virtual string PropertyStatus { get; set; }
 
@@ -43,7 +51,7 @@ namespace HomeProperty.Models.Pages
         [Display(
              Name = "Property Image",
              GroupName = SystemTabNames.Content,
-             Order = 4)]
+             Order = 5)]
         [UIHint(UIHint.Image)]
         public virtual IList<Url> PropertyImages { get; set; }
 
@@ -52,35 +60,35 @@ namespace HomeProperty.Models.Pages
              Name = "Property Name",  // Updated Name for this page
              Description = "Originally a MetaTitle but accustomed for Properties Detail",
              GroupName = SystemTabNames.Content,
-             Order = 5)]
+             Order = 6)]
         public override string? MetaTitle { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Property Price",
             GroupName = SystemTabNames.Content,
-            Order = 6)]
+            Order = 7)]
         public virtual int PropertyPrice { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Property Description",
             GroupName = SystemTabNames.Content,
-            Order = 7)]
+            Order = 8)]
         public virtual XhtmlString PropertyDescription { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Number of Rooms",
             GroupName = SystemTabNames.Content,
-            Order = 8)]
+            Order = 9)]
         public virtual int PropertyNumberOfRooms { get; set; }
 
         [CultureSpecific]
         [Display(
             Name = "Number of Beds",
             GroupName = SystemTabNames.Content,
-            Order = 9)]
+            Order = 10)]
         public virtual int PropertyNumberOfBeds { get; set; }
       
         [CultureSpecific]
