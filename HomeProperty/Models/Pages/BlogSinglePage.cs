@@ -38,14 +38,6 @@ namespace HomeProperty.Models.Pages
 
         [CultureSpecific]
         [Display(
-            Name = "Blog Date",
-            Description = "Provide Blog Date",
-            GroupName = SystemTabNames.Content,
-            Order = 4)]
-        public virtual DateTime BlogSingleDate { get; set; }
-
-        [CultureSpecific]
-        [Display(
             Name = "Blog Title",        
             GroupName = SystemTabNames.Content,
             Order = 5)]

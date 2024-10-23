@@ -20,7 +20,7 @@
                                             <article class="aa-blog-single">
                                                 <figure class="aa-blog-img">
                                                     <a href="@Url.ContentUrl(blogList.BlogPage.ContentLink)"><img src="@Url.ContentUrl(blogList.BlogPage.BlogSingleImage)" alt="img"></a>
-                                                    <span class="aa-date-tag">@blogList.BlogPage.BlogSingleDate.ToString("dd MMMM, yy")</span>
+                                                    <span class="aa-date-tag">@blogList.BlogPage.StartPublish.Value.ToString("dd MMMM, yy")</span>
                                                 </figure>
                                                 <div class="aa-blog-single-content">
                                                     <h3><a href="@Url.ContentUrl(blogList.BlogPage.ContentLink)">@blogList.BlogPage.BlogSingleTitle</a></h3>
