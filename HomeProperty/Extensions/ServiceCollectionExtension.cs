@@ -6,7 +6,6 @@ using HomeProperty.Business.DataStore.BlogSinglePage;
 using HomeProperty.Business.Rendering;
 using HomeProperty.Services;
 using HomeProperty.Services.BlogListing;
-using HomeProperty.Services.PropertiesList;
 using HomeProperty.Services.PropertiesListing;
 using HomeProperty.Services.SiteMap;
 using Microsoft.AspNetCore.Mvc;

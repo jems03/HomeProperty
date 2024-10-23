@@ -1,6 +1,4 @@
-﻿using HomeProperty.Services.PropertiesList;
-using HomeProperty.Models.CustomModels;
-using HomeProperty.Models.Pages;
+﻿using HomeProperty.Models.Pages;
 
 namespace HomeProperty.Services.PropertiesListing
 {

@@ -1,7 +1,6 @@
-﻿using HomeProperty.Models.CustomModels;
-using HomeProperty.Models.Pages;
+﻿using HomeProperty.Models.Pages;
 
-namespace HomeProperty.Services.PropertiesList
+namespace HomeProperty.Services.PropertiesListing
 {
     public interface IPropertiesListingService
     {

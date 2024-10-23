@@ -1,7 +1,7 @@
 ﻿using EPiServer.Web.Mvc;
 using HomeProperty.Models.Pages;
 using HomeProperty.Models.ViewModels;
-using HomeProperty.Services.PropertiesList;
+using HomeProperty.Services.PropertiesListing;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeProperty.Controllers
