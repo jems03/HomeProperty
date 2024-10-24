@@ -3,6 +3,7 @@ using EPiServer.Web;
 using HomeProperty.Business;
 using HomeProperty.Business.Channels;
 using HomeProperty.Business.DataStore.BlogSinglePage;
+using HomeProperty.Business.DataStore.Properties;
 using HomeProperty.Business.Rendering;
 using HomeProperty.Services;
 using HomeProperty.Services.BlogListing;
@@ -42,6 +43,7 @@ namespace HomeProperty.Extensions
             services.TryAddTransient<IBlogListingService, BlogListingService>();
             services.TryAddTransient<ICommentRepository, CommentRepository>();
             services.TryAddTransient<IPropertiesListingService, PropertiesListingService>();
+            services.TryAddTransient<IPropertyPageVisitRepository, PropertiesPageVisitRepository>();
 
 
             return services;
