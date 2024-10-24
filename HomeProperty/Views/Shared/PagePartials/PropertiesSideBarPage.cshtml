@@ -1,4 +1,5 @@
 ﻿@model PropertiesSideBarPage
+@inject HomeProperty.Services.PropertiesListing.IPropertiesListingService _propertiesListingService
 
 <aside class="aa-properties-sidebar">
     <!-- Start Single properties sidebar -->
@@ -60,42 +61,35 @@
     </div>
     <!-- Start Single properties sidebar -->
     <div class="aa-properties-single-sidebar">
-        <h3>Popular Properties</h3>
-        <div class="media">
-            <div class="media-left">
-                <a href="#">
-                    <img class="media-object" src="/img/item/1.jpg" alt="img">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href="#">This is Title</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <span>$65000</span>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-left">
-                <a href="#">
-                    <img class="media-object" src="/img/item/1.jpg" alt="img">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href="#">This is Title</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <span>$65000</span>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-left">
-                <a href="#">
-                    <img class="media-object" src="/img/item/1.jpg" alt="img">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading"><a href="#">This is Title</a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <span>$65000</span>
-            </div>
-        </div>
+        @if(Model.PropertiesPage != null)
+        {
+            <h3>Popular Properties</h3>
+
+            // Fetch the popular properties using the injected service
+            var popularProperties = _propertiesListingService.GetPopularProperties(Model.PropertiesPage);
+
+            foreach(var property in popularProperties)
+            {
+                <div class="media">
+                    <div class="media-left">
+                        <a href="@Url.ContentUrl(property.ContentLink)">
+
+                            @{
+                                var image = property.PropertyImages.FirstOrDefault();
+                            }
+
+                            <img class="media-object" src="@image" alt="img">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="@Url.ContentUrl(property.ContentLink)">@Html.PropertyFor(m => property.MetaTitle)</a></h4>
+                        @Html.PropertyFor(m => property.PropertyDescription)
+                        <span>@Html.DisplayFor(m => property.PropertyPrice, "PropertyPrice")</span>
+                    </div>
+                </div>
+            }            
+        }
+        
+        
     </div>
 </aside>

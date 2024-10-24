@@ -1,14 +1,17 @@
-﻿using HomeProperty.Models.Pages;
+﻿using HomeProperty.Business.DataStore.Properties;
+using HomeProperty.Models.Pages;
 
 namespace HomeProperty.Services.PropertiesListing
 {
     public class PropertiesListingService : IPropertiesListingService
     {
         private readonly IContentLoader _contentLoader;
+        private readonly IPropertyPageVisitRepository _propertyPageVisitRepository;
 
-        public PropertiesListingService(IContentLoader contentLoader)
+        public PropertiesListingService(IContentLoader contentLoader, IPropertyPageVisitRepository propertyPageVisitRepository)
         {
             _contentLoader = contentLoader;
+            _propertyPageVisitRepository = propertyPageVisitRepository;
         }
 
         public IList<PropertiesDetailPage> GetAllPropertiesList(ContentReference propertiesList)
@@ -32,5 +35,21 @@ namespace HomeProperty.Services.PropertiesListing
             return getLatestProperties;
         }
 
+        public IList<PropertiesDetailPage> GetPopularProperties(ContentReference propertiesList)
+        {
+            // Fetch all the visit count on 
+            var propertyVisitorCount = _propertyPageVisitRepository.GetPopularPropertiesVisit();
+
+            // Select properties and order by visit count
+            var getAllPopularProperties = _contentLoader.GetChildren<PageData>(propertiesList)
+                .OfType<PropertiesDetailPage>()
+                .OrderByDescending(property =>
+                    propertyVisitorCount.FirstOrDefault(prop => prop.PageId == property.ContentLink.ID)?.VisitCount ?? 0)
+                .Take(3)
+                .ToList();
+
+            return getAllPopularProperties;
+
+        }
     }
 }

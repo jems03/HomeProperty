@@ -27,7 +27,7 @@ namespace HomeProperty.Business.DataStore.Properties
             return _dynamicDataStore.Save(propertyPageVisit);
         }
 
-        public IList<VisitorCount> GetPopularProperties(int count)
+        public IList<VisitorCount> GetPopularPropertiesVisit()
         {           
             var propertiesPageVisitCount = GetAllPropertiesPageVisit().GroupBy(pageVisit => pageVisit.PageId)
                 .Select(page => new VisitorCount
@@ -36,7 +36,6 @@ namespace HomeProperty.Business.DataStore.Properties
                     VisitCount = page.Count()
                 })
                 .OrderByDescending(pageVisit => pageVisit.VisitCount)
-                .Take(count)
                 .ToList();
 
             return propertiesPageVisitCount;

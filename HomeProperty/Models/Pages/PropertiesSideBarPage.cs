@@ -8,7 +8,7 @@ namespace HomeProperty.Models.Pages
     {
         [Display(
              Name = "Properties Page",
-             Description = "Select the blog archive page to fetch blog posts from",
+             Description = "Select the properties page to fetch properties list",
              GroupName = SystemTabNames.Content,
              Order = 1)]
         [AllowedTypes(typeof(PropertiesPage))]

@@ -5,6 +5,8 @@ namespace HomeProperty.Models.Pages
 {
     [ContentType(DisplayName = "Properties Page", 
         GUID = "4909fa2b-c914-4bc8-922b-8afba9d74a5c")]
+    [AvailableContentTypes(Include = new[] { typeof(PropertiesDetailPage), typeof(PropertiesSideBarPage) })]
+
     public class PropertiesPage : SitePageData
     {
         [CultureSpecific]

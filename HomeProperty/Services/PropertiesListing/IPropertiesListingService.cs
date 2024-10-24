@@ -7,5 +7,7 @@ namespace HomeProperty.Services.PropertiesListing
         IList<PropertiesDetailPage> GetAllPropertiesList(ContentReference propertiesList);
 
         IList<PropertiesDetailPage> GetLatestPropertiesList(ContentReference propertiesList);
+
+        public IList<PropertiesDetailPage> GetPopularProperties(ContentReference propertiesList);
     }
 }
