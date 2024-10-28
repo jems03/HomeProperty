@@ -62,11 +62,16 @@
                                         <article class="aa-properties-item">
                                             <a class="aa-properties-item-img" href="@Url.ContentUrl(property.ContentLink)">
 
-                                                @{
-                                                    var image = property.PropertyImages.FirstOrDefault();
+                                                @if(property.PropertyImages != null)
+                                                {
+                                                     var image = property.PropertyImages.FirstOrDefault();
+                                                    <img alt="img" src="@Url.ContentUrl(image)">
                                                 }
-
-                                                <img alt="img" src="@Url.ContentUrl(image)">
+                                                else
+                                                {
+                                                     <img alt="img" src="/img/item/1.jpg">
+                                                }
+                                              
                                             </a>
                                             <div class="aa-tag @property.PropertyStatus">
                                                 @PropertyStatusHelper.GetPropertyStatusText(@property.PropertyStatus)
