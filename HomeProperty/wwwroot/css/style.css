@@ -855,8 +855,6 @@ img {
 
         .aa-properties-item .aa-properties-item-img img {
             width: 100%;
-            object-fit: cover;
-            display: block;
         }
 
     .aa-properties-item .aa-tag {

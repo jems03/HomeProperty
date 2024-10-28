@@ -8,7 +8,6 @@ using HomeProperty.Models.Media;
 using HomeProperty.Models.Pages;
 using Quartz;
 using System.Text.RegularExpressions;
-using Wangkanai;
 using Wangkanai.Extensions;
 
 
@@ -140,7 +139,7 @@ namespace HomeProperty.Business.Initialization.Jobs.PropertiesImport
                             {
                                 var line = reader.ReadLine();
 
-                                var values = line.Split(',');
+                                var values = line.Split(',');                             
 
                                 var propertiesItem = new PropertiesDetailDTO
                                 {
@@ -211,12 +210,12 @@ namespace HomeProperty.Business.Initialization.Jobs.PropertiesImport
 
             propertiesDetailPage.Name = propertiesDTO.PropertyName;
             propertiesDetailPage.PropertyPrice = propertiesDTO.PropertyPrice;
-            propertiesDetailPage.PropertyDescription = new XhtmlString(propertiesDTO.PropertyDescription);
+            propertiesDetailPage.PropertyDescription = new XhtmlString($"<p>{propertiesDTO.PropertyDescription}</p>");
             propertiesDetailPage.PropertyNumberOfRooms = propertiesDTO.PropertyNumberOfRooms;
             propertiesDetailPage.PropertyNumberOfBeds = propertiesDTO.PropertyNumberOfBeds;
             propertiesDetailPage.PropertyNumberOfBaths = propertiesDTO.PropertyNumberOfBaths;
             propertiesDetailPage.PropertySize = propertiesDTO.PropertySize;
-            propertiesDetailPage.PropertyFeaturesList = propertiesDTO.PropertyFeaturesList;
+            propertiesDetailPage.PropertyFeaturesList = propertiesDTO.PropertyFeaturesList.Replace(" | ", ",");
             propertiesDetailPage.PropertyVideo = propertiesDTO.PropertyVideo;
             propertiesDetailPage.PropertyMapCoordinates = propertiesDTO.PropertyMapCoordinates;
 
