@@ -61,6 +61,8 @@ namespace HomeProperty.Business.Initialization.Jobs.PropertiesImport
             _siteDefinitionRepository = siteDefinitionRepository;
         }
 
+        int successfulPropertyImports = 0;
+
         /// <summary>
         /// Called when a user clicks on Stop for a manually started job, or when ASP.NET shuts down.
         /// </summary>
@@ -80,6 +82,8 @@ namespace HomeProperty.Business.Initialization.Jobs.PropertiesImport
 
         private async Task<string> ExecuteAsync()
         {
+            
+
             try
             {
                 //Call OnStatusChanged to periodically notify progress of job for manually started jobs
@@ -103,7 +107,7 @@ namespace HomeProperty.Business.Initialization.Jobs.PropertiesImport
                 }
 
                 OnStatusChanged("Async execution completed");
-                return "Property details imported successfully";
+                return $"{successfulPropertyImports} properties imported successfully.";
             }
             catch (Exception ex)
             {
@@ -160,11 +164,12 @@ namespace HomeProperty.Business.Initialization.Jobs.PropertiesImport
                                 };
 
                                 CreateOrUpdatePropertiesDetailPage(propertiesItem, baseUrl);
+                                successfulPropertyImports++;
                             }
                         }
                     }
 
-                    return "";
+                    return string.Empty;
 
                 }
                 else
