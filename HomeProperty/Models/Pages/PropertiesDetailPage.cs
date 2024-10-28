@@ -70,6 +70,7 @@ namespace HomeProperty.Models.Pages
             Name = "Property Description",
             GroupName = SystemTabNames.Content,
             Order = 8)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString PropertyDescription { get; set; }
 
         [CultureSpecific]

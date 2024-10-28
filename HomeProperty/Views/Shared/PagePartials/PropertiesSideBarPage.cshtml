@@ -74,11 +74,18 @@
                     <div class="media-left">
                         <a href="@Url.ContentUrl(property.ContentLink)">
 
-                            @{
+                            @if (property.PropertyImages != null)
+                            {
                                 var image = property.PropertyImages.FirstOrDefault();
+                                <img class="media-object" src="@image" alt="img">
+                            }
+                            else
+                            {
+                                <img class="media-object" src="/img/item/1.jpg" alt="img">
                             }
 
-                            <img class="media-object" src="@image" alt="img">
+
+                           
                         </a>
                     </div>
                     <div class="media-body">

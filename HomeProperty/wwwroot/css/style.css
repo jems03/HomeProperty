@@ -850,10 +850,13 @@ img {
 
     .aa-properties-item .aa-properties-item-img {
         width: 100%;
+
     }
 
         .aa-properties-item .aa-properties-item-img img {
             width: 100%;
+            object-fit: cover;
+            display: block;
         }
 
     .aa-properties-item .aa-tag {
@@ -862,6 +865,7 @@ img {
         position: absolute;
         left: 15px;
         top: -15px;
+
     }
 
     .aa-properties-item .for-rent {

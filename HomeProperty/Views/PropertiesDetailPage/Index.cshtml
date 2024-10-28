@@ -36,9 +36,12 @@
                             {
                                 @foreach (var image in Model.CurrentPage.PropertyImages)
                                 {
-                                    Console.WriteLine(image);
                                     <img src="@Url.ContentUrl(image)" alt="img">
                                 }
+                            }
+                            else
+                            {
+                                <img src="/img/slider/1.jpg" alt="img">
                             }
                         </div>
                         <div class="aa-properties-info">
