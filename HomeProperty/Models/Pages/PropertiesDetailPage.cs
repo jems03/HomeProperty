@@ -1,11 +1,6 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAnnotations;
-using EPiServer.Shell.ObjectEditing;
-using EPiServer.SpecializedProperties;
+﻿using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
 using HomeProperty.SelectionFactories;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Pages
