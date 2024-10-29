@@ -1,3 +1,6 @@
 ﻿@model PageViewModel<StartPage>
 
-@Html.PropertyFor(m => m.CurrentPage.Sections, new { data_epi_edit = "false" })
+
+<div data-epi-edit="false">
+    @Html.PropertyFor(m => m.CurrentPage.Sections, new { data_epi_edit = "false" })
+</div>
