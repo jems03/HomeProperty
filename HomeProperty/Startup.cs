@@ -32,8 +32,10 @@ namespace HomeProperty
                 .AddAdminUserRegistration()
                 .AddEmbeddedLocalization<Startup>();
 
-           
+            
         }
+
+
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -50,7 +52,12 @@ namespace HomeProperty
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapContent();
+
+                endpoints.MapControllerRoute(name: "sitemap", pattern: "sitemap.xml", defaults: new { controller = "Sitemap", action = "Sitemap" });
+                endpoints.MapRazorPages();
             });
+
+
         }
     }
 }

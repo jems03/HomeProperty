@@ -24,7 +24,7 @@ namespace HomeProperty.Services.SiteMap
             var pages = _contentRepository.GetDescendents(myStartPage.ContentLink)
                 .Select(reference => _contentRepository.Get<IContent>(reference))
                 .OfType<SitePageData>()
-                .Where(page => page.VisibleInMenu);
+                 .Where(page => page.ExcludeFromSiteMap == false);
 
             return pages;
         }

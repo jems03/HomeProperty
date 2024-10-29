@@ -12,6 +12,9 @@ namespace HomeProperty
 
             [Display(Name = "Layout", Order = 2)]
             public const string Layout = "Layout";
+
+            [Display(Name = "Properties", Order = 3)]
+            public const string Properties = "Properties";
         }
 
        public static class UIHintDescriptors

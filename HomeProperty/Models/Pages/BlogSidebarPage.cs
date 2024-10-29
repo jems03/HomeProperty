@@ -4,7 +4,7 @@ namespace HomeProperty.Models.Pages
 {
     [ContentType(DisplayName = "Blog Sidebar Page", 
         GUID = "8a971507-30eb-4f56-a3ab-8f2bed580809")]
-    public class BlogSidebarPage : PageData
+    public class BlogSidebarPage : SitePageData
     {
         [Display(
             Name = "Blog Archive Page",

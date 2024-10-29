@@ -16,6 +16,14 @@ namespace HomeProperty.Models.Pages
 
         [CultureSpecific]
         [Display(
+           Name = "Exclude from Sitemap",
+           Description = "Exclude the Specific Page on Site Map",
+           GroupName = Globals.GroupNames.Properties,
+           Order = 2)]
+        public virtual bool ExcludeFromSiteMap { get; set; }
+
+        [CultureSpecific]
+        [Display(
            Name = "Sections",
            Description = "Add website sections",
            GroupName = SystemTabNames.Content,
