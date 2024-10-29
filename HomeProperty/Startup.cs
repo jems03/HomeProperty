@@ -30,12 +30,8 @@ namespace HomeProperty
                 .AddCms()
                 .AddHomeProperty()
                 .AddAdminUserRegistration()
-                .AddEmbeddedLocalization<Startup>();
-
-            
+                .AddEmbeddedLocalization<Startup>();           
         }
-
-
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

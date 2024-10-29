@@ -47,16 +47,13 @@
     <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
     <!-- END SCROLL TOP BUTTON -->
+
     @{
         await Html.RenderPartialAsync("Header", Model);
-    }
-
-    @RenderBody()
-
-    @{
+        @RenderBody()
         await Html.RenderPartialAsync("Footer", Model);
     }
-
+   
     @Html.RequiredClientResources(RenderingTags.Footer)
     <!-- jQuery library -->
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
