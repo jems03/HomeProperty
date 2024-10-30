@@ -45,20 +45,12 @@ namespace HomeProperty.Models.Pages
            Order = 4)]
         public virtual string? ContactEmail { get; set; }
 
-        //[CultureSpecific]
-        //[Display(
-        //   Name = "Header Navigation",
-        //   GroupName = Globals.GroupNames.Layout,
-        //   Order = 5)]
-        //public virtual LinkItemCollection? HeaderNavigation { get; set; }
-
         [CultureSpecific]
         [Display(
           Name = "Header Navigation",
           GroupName = Globals.GroupNames.Layout,
           Order = 5)]
         public virtual IList<HeaderMenuBlockItem>? Navigation { get; set; }
-
 
         [Display(
           Name = "Footer Section",
@@ -71,5 +63,14 @@ namespace HomeProperty.Models.Pages
           GroupName = Globals.GroupNames.Layout,
           Order = 7)]
         public virtual LinkItemCollection? FooterNavigation { get; set; }
+
+        [Display(
+          Name = "Error Page",
+          Description = "When the provided URL does not exist, it will redirect to the Error Page",
+          GroupName = Globals.GroupNames.Properties,
+          Order = 8)]
+        public virtual ContentReference? ErrorPage { get; set; }
+
+
     }
 }

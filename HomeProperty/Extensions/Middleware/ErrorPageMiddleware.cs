@@ -1,4 +1,5 @@
 ﻿using EPiServer.Web.Routing;
+using HomeProperty.Models.Pages;
 
 namespace HomeProperty.Extensions.Middleware
 {
@@ -22,12 +23,12 @@ namespace HomeProperty.Extensions.Middleware
             // Error Page
             if(context.Response.StatusCode == 404)
             {
-                var errorPageReference = new ContentReference(74);
-                var notFoundPage = _urlResolver.GetUrl(errorPageReference);
+                var startPage = _contentLoader.Get<StartPage>(ContentReference.StartPage);
+                var notFoundPage = _contentLoader.Get<StandardPage>(startPage.ErrorPage);              
 
                 // Redirect to 404 Page
-                if (!string.IsNullOrEmpty(notFoundPage)) { 
-                    context.Response.Redirect(notFoundPage);
+                if (notFoundPage != null) { 
+                    context.Response.Redirect(_urlResolver.GetUrl(notFoundPage.ContentLink));
                 }
 
             }
