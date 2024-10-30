@@ -4,6 +4,7 @@ using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using HomeProperty.Extensions;
+using HomeProperty.Extensions.Middleware;
 
 namespace HomeProperty
 {
@@ -39,6 +40,9 @@ namespace HomeProperty
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Middleware
+            app.UseMiddleware<ErrorPageMiddleware>();
 
             app.UseStaticFiles();
             app.UseRouting();
