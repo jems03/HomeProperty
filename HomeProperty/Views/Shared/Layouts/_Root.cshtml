@@ -36,10 +36,13 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
     @Html.RequiredClientResources(RenderingTags.Header)
+
 </head>
 <body class="aa-price-range">
+
+    @await Html.RenderEPiServerQuickNavigatorAsync()
+
     <!-- Pre Loader -->
     <div id="aa-preloader-area">
         <div class="pulse"></div>
