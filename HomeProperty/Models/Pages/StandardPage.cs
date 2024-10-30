@@ -27,5 +27,14 @@ namespace HomeProperty.Models.Pages
             Order = 1)]
         [UIHint(UIHint.Image)]
         public virtual Url? MainSectionImageUrl { get; set; }
+
+        [CultureSpecific]
+        [Display(
+            Name = "Title",  // Updated Name for this page
+            Description = "Originally a MetaTitle but accustomed for Standard Page",
+            GroupName = SystemTabNames.Content,
+            Order = 2)]
+        public override string? MetaTitle { get; set; }
+
     }
 }

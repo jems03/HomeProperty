@@ -17,7 +17,6 @@
     </div>
 </section>
 <!-- End Property header  -->
-
 <!-- Start Blog -->
 <section id="aa-blog">
     <div class="container">
@@ -77,6 +76,11 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div data-epi-edit="false">
+                                @Html.PropertyFor(m => m.CurrentPage.Sections, new { data_epi_edit = "false" })
+                            </div>
+
                         </div>
                         <!-- Start blog sidebar -->
                         <div class="col-md-4">

@@ -26,6 +26,14 @@ namespace HomeProperty.Models.Pages
         [AllowedTypes(typeof(PropertiesSideBarPage))]
         public virtual ContentArea? PropertiesSideBar { get; set; }
 
+        [CultureSpecific]
+        [Display(
+           Name = "Title",  // Updated Name for this page
+           Description = "Originally a MetaTitle but accustomed for Properties Page",
+           GroupName = SystemTabNames.Content,
+           Order = 3)]
+        public override string? MetaTitle { get; set; }
+
         [Ignore]
         public IList<PropertiesDetailPage> PropertiesDetailPages { get; set; }
     }

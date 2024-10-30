@@ -26,6 +26,14 @@ namespace HomeProperty.Models.Pages
         [AllowedTypes(typeof(BlogSidebarPage))]
         public virtual ContentArea? BlogSideBar { get; set; }
 
+        [CultureSpecific]
+        [Display(
+           Name = "Title",  // Updated Name for this page
+           Description = "Originally a MetaTitle but accustomed for Blog Archive Page",
+           GroupName = SystemTabNames.Content,
+           Order = 3)]
+        public override string? MetaTitle { get; set; }
+
         [Ignore]
         public virtual IList<BlogPageWithComments>? BlogPageWithComments { get; set; }
 

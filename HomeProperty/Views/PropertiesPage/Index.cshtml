@@ -62,16 +62,16 @@
                                         <article class="aa-properties-item">
                                             <a class="aa-properties-item-img" href="@Url.ContentUrl(property.ContentLink)">
 
-                                                @if(property.PropertyImages != null)
+                                                @if (property.PropertyImages != null)
                                                 {
-                                                     var image = property.PropertyImages.FirstOrDefault();
+                                                    var image = property.PropertyImages.FirstOrDefault();
                                                     <img alt="img" src="@Url.ContentUrl(image)">
                                                 }
                                                 else
                                                 {
-                                                     <img alt="img" src="/img/item/1.jpg">
+                                                    <img alt="img" src="/img/item/1.jpg">
                                                 }
-                                              
+
                                             </a>
                                             <div class="aa-tag @property.PropertyStatus">
                                                 @PropertyStatusHelper.GetPropertyStatusText(@property.PropertyStatus)
@@ -101,7 +101,7 @@
 
                                                 </div>
                                                 <div class="aa-properties-about">
-                                                    <h3><a href="@Url.ContentUrl(property.ContentLink)">@property.MetaTitle</a></h3>                                              
+                                                    <h3><a href="@Url.ContentUrl(property.ContentLink)">@property.MetaTitle</a></h3>
                                                     @Html.PropertyFor(m => property.PropertyDescription)
                                                 </div>
                                                 <div class="aa-properties-detial">
@@ -144,10 +144,15 @@
                     }
 
                 </div>
+
+                <div data-epi-edit="false">
+                    @Html.PropertyFor(m => m.CurrentPage.Sections, new { data_epi_edit = "false" })
+                </div>
+
             </div>
             <!-- Start properties sidebar -->
             <div class="col-md-4">
-                @if(Model.CurrentPage.PropertiesSideBar != null)
+                @if (Model.CurrentPage.PropertiesSideBar != null)
                 {
                     @Html.PropertyFor(m => m.CurrentPage.PropertiesSideBar)
                 }
