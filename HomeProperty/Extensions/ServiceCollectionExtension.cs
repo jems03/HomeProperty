@@ -1,11 +1,11 @@
-﻿using EPiServer.Labs.ContentManager;
+﻿using EPiServer.Framework;
+using EPiServer.Labs.ContentManager;
 using EPiServer.Web;
 using HomeProperty.Business;
 using HomeProperty.Business.Channels;
 using HomeProperty.Business.DataStore.BlogSinglePage;
 using HomeProperty.Business.DataStore.Properties;
 using HomeProperty.Business.Rendering;
-using HomeProperty.Services;
 using HomeProperty.Services.BlogListing;
 using HomeProperty.Services.PropertiesListing;
 using HomeProperty.Services.SiteMap;
@@ -36,15 +36,13 @@ namespace HomeProperty.Extensions
             services.AddDisplayResolutions();
             services.AddDetection();
             services.AddContentManager();
-
-            services.TryAddTransient<BlogPostService>();
+           
             services.TryAddTransient<SiteMapService>();
 
             services.TryAddTransient<IBlogListingService, BlogListingService>();
             services.TryAddTransient<ICommentRepository, CommentRepository>();
             services.TryAddTransient<IPropertiesListingService, PropertiesListingService>();
             services.TryAddTransient<IPropertyPageVisitRepository, PropertiesPageVisitRepository>();
-
 
             return services;
         }
