@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EPiServer.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
 {
@@ -11,30 +12,38 @@ namespace HomeProperty.Models.Blocks
             Name = "Google Map Embed Link",
             GroupName = SystemTabNames.Content,
             Order = 1)]
+        [UIHint(UIHint.Textarea)]
         public virtual string? MapCoordinates { get; set; }
+
+        [Display(
+            Name = "Contact Title",
+            GroupName = SystemTabNames.Content,
+            Order = 2)]
+        public virtual string? ContactTitle { get; set; }
 
         [Display(
             Name = "Contact Description",
             GroupName = SystemTabNames.Content,
-            Order = 2)]
+            Order = 3)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? ContactDescription { get; set; }
 
         [Display(
             Name = "Contact Number",
             GroupName = SystemTabNames.Content,
-            Order = 3)]
+            Order = 4)]
         public virtual string? ContactNumber { get; set; }
 
         [Display(
             Name = "Contact Email",
             GroupName = SystemTabNames.Content,
-            Order = 4)]
+            Order = 5)]
         public virtual string? ContactEmail { get; set; }
 
         [Display(
             Name = "Contact Address",
             GroupName = SystemTabNames.Content,
-            Order = 5)]
+            Order = 6)]
         public virtual string? ContactAddress { get; set; }
     }
 }

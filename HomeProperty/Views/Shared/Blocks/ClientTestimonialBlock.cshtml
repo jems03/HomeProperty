@@ -1,6 +1,6 @@
 ﻿@model ClientTestimonialBlock
 
-@if(Model != null && Model.ClientTestimonialItems != null)
+@if (Model != null && Model.ClientTestimonialItems != null)
 {
     <!-- Client Testimonial -->
     <section id="aa-client-testimonial" style="background-image:url(@Model.ClientTestimonialImage)">
@@ -17,7 +17,7 @@
                         <div class="aa-testimonial-content">
                             <!-- testimonial slider -->
                             <ul class="aa-testimonial-slider">
-                                @foreach(var client in Model.ClientTestimonialItems)
+                                @foreach (var client in Model.ClientTestimonialItems)
                                 {
                                     <li>
                                         <div class="aa-testimonial-single">
@@ -25,7 +25,7 @@
                                                 <img src="@Url.ContentUrl(client.ClientImage)" alt="testimonial img">
                                             </div>
                                             <div class="aa-testimonial-info">
-                                                <p>@Html.PropertyFor(m => client.ClientDescription)</p>
+                                                @Html.PropertyFor(m => client.ClientDescription)
                                             </div>
                                             <div class="aa-testimonial-bio">
                                                 <p>@Html.PropertyFor(m => client.ClientName)</p>
@@ -33,7 +33,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                }                                                         
+                                }
                             </ul>
                         </div>
                     </div>
@@ -45,5 +45,5 @@
 }
 else
 {
-   // Do not render
+    // Do not render
 }

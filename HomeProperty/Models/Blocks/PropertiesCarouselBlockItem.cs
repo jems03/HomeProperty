@@ -1,8 +1,5 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
-using EPiServer.Web;
-using System;
+﻿using EPiServer.Web;
+using HomeProperty.Models.Pages;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
@@ -33,7 +30,7 @@ namespace HomeProperty.Models.Blocks
             Name = "Property Size",
             GroupName = SystemTabNames.Content,
             Order = 3)]
-        public virtual string PropertySize { get; set; }
+        public virtual int PropertySize { get; set; }
 
         [CultureSpecific]
         [Display(
@@ -47,14 +44,22 @@ namespace HomeProperty.Models.Blocks
            Name = "Property Discount",
            GroupName = SystemTabNames.Content,
            Order = 5)]
-        public virtual string PropertyDiscount { get; set; }
+        public virtual int PropertyDiscount { get; set; }      
 
         [CultureSpecific]
         [Display(
            Name = "Property Price",
            GroupName = SystemTabNames.Content,
            Order = 6)]
-        public virtual string PropertyPrice { get; set; }
+        public virtual int PropertyPrice { get; set; }
+
+        [CultureSpecific]
+        [Display(
+           Name = "Property Details Page",
+           GroupName = SystemTabNames.Content,
+           Order = 7)]
+        [AllowedTypes(typeof(PropertiesDetailPage))]
+        public virtual ContentReference PropertiesDetailPage { get; set; }
 
     }
 }

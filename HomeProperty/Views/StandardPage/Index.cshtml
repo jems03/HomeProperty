@@ -1,4 +1,4 @@
-﻿@model PageViewModel<StandardPage>
+﻿@model IPageViewModel<StandardPage>
 
 <!-- Start Property header  -->
 <section id="aa-property-header" style="background-image:url(@Url.ContentUrl(Model.CurrentPage.MainSectionImageUrl))">
@@ -18,4 +18,6 @@
 </section>
 <!-- End Property header  -->
 
-@Html.PropertyFor(m => m.CurrentPage.Sections)
+<div data-epi-edit="false">
+    @Html.PropertyFor(m => m.CurrentPage.Sections, new { data_epi_edit = "false" })
+</div>

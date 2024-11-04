@@ -1,12 +1,10 @@
 using EPiServer.Cms.Shell;
-using EPiServer.Cms.TinyMce.PropertySettings.Internal;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
-using HomeProperty.Business;
 using HomeProperty.Extensions;
-using Microsoft.AspNetCore.Mvc;
+using HomeProperty.Extensions.Middleware;
 
 namespace HomeProperty
 {
@@ -33,9 +31,7 @@ namespace HomeProperty
                 .AddCms()
                 .AddHomeProperty()
                 .AddAdminUserRegistration()
-                .AddEmbeddedLocalization<Startup>();
-
-           
+                .AddEmbeddedLocalization<Startup>();           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -45,6 +41,9 @@ namespace HomeProperty
                 app.UseDeveloperExceptionPage();
             }
 
+            // Middleware
+            app.UseMiddleware<ErrorPageMiddleware>();
+
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();
@@ -53,7 +52,12 @@ namespace HomeProperty
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapContent();
+
+                endpoints.MapControllerRoute(name: "sitemap", pattern: "sitemap.xml", defaults: new { controller = "Sitemap", action = "Sitemap" });
+                endpoints.MapRazorPages();
             });
+
+
         }
     }
 }

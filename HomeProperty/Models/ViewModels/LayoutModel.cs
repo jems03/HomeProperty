@@ -11,8 +11,9 @@ namespace HomeProperty.Models.ViewModels
         public string? ContactEmail { get; set; }
 
         //public LinkItemCollection? MenuItems { get; set; }
-        public IList<HeaderMenuBlockItem>? Navigation { get; set; }
 
+        public IDictionary<string, string>? Languages { get; set; }
+        public IList<HeaderMenuBlockItem>? Navigation { get; set; }
 
         public FooterSectionBlockItem? FooterSection {  get; set; }
 

@@ -12,6 +12,14 @@ namespace HomeProperty
 
             [Display(Name = "Layout", Order = 2)]
             public const string Layout = "Layout";
+
+            [Display(Name = "Properties", Order = 3)]
+            public const string Properties = "Properties";
+        }
+
+       public static class UIHintDescriptors
+        {
+            public const string TinyMCE = "TinyMCEDescriptor";
         }
 
         public static class WebRoles
@@ -27,6 +35,11 @@ namespace HomeProperty
             public const string HalfWidth = "half";
             public const string NarrowWidth = "narrow";
             public const string NoRenderer = "norenderer";
+        }
+
+        public static class CmsCategories
+        {
+            public const string PropertyFeatures = "Property Features";
         }
 
     }

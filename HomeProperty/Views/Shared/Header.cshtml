@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <div class="aa-header-area">
                     <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="col-md-5 col-sm-5 col-xs-5">
                             <div class="aa-header-left">
                                 <div class="aa-telephone-no">
                                     <span class="fa fa-phone"></span>
@@ -20,10 +20,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="col-md-7 col-sm-7 col-xs-7">
                             <div class="aa-header-right">
                                 <a href="register.html" class="aa-register">Register</a>
                                 <a href="signin.html" class="aa-login">Login</a>
+                                @{
+                                    var languages = Model.Layout.Languages;
+                                    if(languages.Count > 1)
+                                    {
+                                        <label for="language">Language</label>
+                                        foreach(var lang in languages)
+                                        {
+                                            <a href="@Url.ContentUrl(lang.Value)" class="aa-register" style="text-transform:uppercase">@lang.Key</a>
+                                        }
+                                    }
+                                }
                             </div>
                         </div>
                     </div>

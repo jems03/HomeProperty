@@ -1,8 +1,4 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
-using EPiServer.Web;
-using System;
+﻿using EPiServer.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
@@ -25,6 +21,7 @@ namespace HomeProperty.Models.Blocks
             Name = "Section Descripton",
             GroupName = SystemTabNames.Content,
             Order = 2)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? SectionDescription { get; set; }
 
         [CultureSpecific]

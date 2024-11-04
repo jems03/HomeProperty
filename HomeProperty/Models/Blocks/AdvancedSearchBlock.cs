@@ -1,8 +1,7 @@
 ﻿namespace HomeProperty.Models.Blocks
 {
     [ContentType(DisplayName = "Advanced Search Block", 
-        GUID = "21ba4281-b275-4f7f-a7ee-94ed96a1c0cf", 
-        Description = "")]
+        GUID = "21ba4281-b275-4f7f-a7ee-94ed96a1c0cf")]
     public class AdvancedSearchBlock : BlockData
     {
         /*

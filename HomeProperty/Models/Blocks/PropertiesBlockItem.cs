@@ -1,9 +1,5 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
-using EPiServer.Shell.ObjectEditing;
+﻿using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
@@ -69,6 +65,7 @@ namespace HomeProperty.Models.Blocks
             Name = "Property Description",
             GroupName = SystemTabNames.Content,
             Order = 8)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? LatestPropertyDescription { get; set; }
 
         [CultureSpecific]

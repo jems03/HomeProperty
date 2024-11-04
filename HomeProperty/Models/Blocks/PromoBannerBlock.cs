@@ -1,8 +1,4 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.DataAnnotations;
-using EPiServer.Web;
-using System;
+﻿using EPiServer.Web;
 using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
@@ -33,6 +29,7 @@ namespace HomeProperty.Models.Blocks
             Name = "Promo Banner Description",
             GroupName = SystemTabNames.Content,
             Order = 3)]
+        [UIHint(Globals.UIHintDescriptors.TinyMCE)]
         public virtual XhtmlString? PromoBannerDescription { get; set; }
     }
 }

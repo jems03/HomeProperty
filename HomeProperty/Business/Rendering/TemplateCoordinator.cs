@@ -32,6 +32,15 @@ namespace HomeProperty.Business.Rendering
                 AvailableWithoutTag = true,
                 Path = PagePartialPath("Page.cshtml")
             });
+
+            viewTemplateModelRegistrator.Add(typeof(IContentData), new TemplateModel
+            {
+                Name = "NoRenderer",
+                Inherit = true,
+                Tags = [Globals.ContentAreaTags.NoRenderer],
+                AvailableWithoutTag = false,
+                Path = BlockPath("NoRenderer.cshtml")
+            });
         }
 
         private static string BlockPath(string fileName) => $"{BlockFolder}{fileName}";

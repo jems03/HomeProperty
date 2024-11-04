@@ -1,18 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using HomeProperty.Models.Pages;
+using System.ComponentModel.DataAnnotations;
 
 namespace HomeProperty.Models.Blocks
 {
     [ContentType(DisplayName = "Latest News Block", 
-        GUID = "ac6993a0-ce50-4cf2-9359-e2467b76ec9c", 
-        Description = "")]
+        GUID = "c857dbe6-f597-4009-9803-f256deed8662" )]
     public class LatestNewsBlock : BlockData
     {
-        [CultureSpecific]
         [Display(
-             Name = "Latest News Block",
-             Description = "Provide the Latest News",
-             GroupName = SystemTabNames.Content,
-             Order = 1)]
-        public virtual IList<LatestNewsBlockItem>? LatestNewsItems { get; set; }
+            Name = "Blog Archive Page",
+            Description = "Select the blog archive page to fetch blog posts from",
+            GroupName = SystemTabNames.Content,
+            Order = 1)]
+        [AllowedTypes(typeof(BlogArchivePage))]
+        public virtual ContentReference BlogArchivePage { get; set; }
     }
 }

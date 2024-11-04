@@ -10,8 +10,7 @@ namespace HomeProperty.Models.Pages
     [AvailableContentTypes(Exclude = new[] { typeof(StartPage),
         typeof(PropertiesBlockItem),
         typeof(OurAgentsBlockItem),
-        typeof(PropertiesCarouselBlockItem),
-        typeof(LatestNewsBlockItem),
+        typeof(PropertiesCarouselBlockItem),      
         typeof(ClientBrandBlockItem),
         typeof(ClientTestimonialBlockItem),
         typeof(FooterSectionBlockItem),
@@ -28,5 +27,14 @@ namespace HomeProperty.Models.Pages
             Order = 1)]
         [UIHint(UIHint.Image)]
         public virtual Url? MainSectionImageUrl { get; set; }
+
+        [CultureSpecific]
+        [Display(
+            Name = "Title",  // Updated Name for this page
+            Description = "Originally a MetaTitle but accustomed for Standard Page",
+            GroupName = SystemTabNames.Content,
+            Order = 2)]
+        public override string? MetaTitle { get; set; }
+
     }
 }

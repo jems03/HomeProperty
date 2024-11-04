@@ -850,6 +850,7 @@ img {
 
     .aa-properties-item .aa-properties-item-img {
         width: 100%;
+
     }
 
         .aa-properties-item .aa-properties-item-img img {
@@ -862,6 +863,7 @@ img {
         position: absolute;
         left: 15px;
         top: -15px;
+
     }
 
     .aa-properties-item .for-rent {
@@ -1416,6 +1418,7 @@ img {
     display: inline;
     float: left;
     width: 100%;
+    margin-bottom: 30px
 }
 
     .aa-blog-single .aa-blog-img {
@@ -2501,6 +2504,7 @@ img {
 
                 #aa-contact .aa-contact-area .aa-contact-top .aa-contact-top-right p {
                     color: #fff;
+                    
                     line-height: 25px;
                 }
 

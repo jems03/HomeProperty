@@ -1,0 +1,163 @@
+﻿@model IPageViewModel<PropertiesPage>
+@using HomeProperty.Utilities
+
+<!-- Start Property header  -->
+<section id="aa-property-header" style="background-image:url(@Url.ContentUrl(Model.CurrentPage.MainSectionImageUrl))">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="aa-property-header-inner">
+                    <h2>@Model.CurrentPage.MetaTitle</h2>
+                    <ol class="breadcrumb">
+                        <li><a href="#">HOME</a></li>
+                        <li class="active">@Model.CurrentPage.MetaTitle</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Property header  -->
+<!-- Start Properties  -->
+<section id="aa-properties">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="aa-properties-content">
+                    <!-- start properties content head -->
+                    <div class="aa-properties-content-head">
+                        <div class="aa-properties-content-head-left">
+                            <form action="" class="aa-sort-form">
+                                <label for="">Sort by</label>
+                                <select name="">
+                                    <option value="1" selected="Default">Default</option>
+                                    <option value="2">Name</option>
+                                    <option value="3">Price</option>
+                                    <option value="4">Date</option>
+                                </select>
+                            </form>
+                            <form action="" class="aa-show-form">
+                                <label for="">Show</label>
+                                <select name="">
+                                    <option value="1" selected="12">6</option>
+                                    <option value="2">12</option>
+                                    <option value="3">24</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="aa-properties-content-head-right">
+                            <a id="aa-grid-properties" href="#"><span class="fa fa-th"></span></a>
+                            <a id="aa-list-properties" href="#"><span class="fa fa-list"></span></a>
+                        </div>
+                    </div>
+                    <!-- Start properties content body -->
+                    @if (Model.CurrentPage.PropertiesDetailPages != null && Model.CurrentPage.PropertiesDetailPages.Count() > 0)
+                    {
+                        <div class="aa-properties-content-body">
+                            <ul class="aa-properties-nav">
+
+                                @foreach (var property in Model.CurrentPage.PropertiesDetailPages)
+                                {
+                                    <li>
+                                        <article class="aa-properties-item">
+                                            <a class="aa-properties-item-img" href="@Url.ContentUrl(property.ContentLink)">
+
+                                                @if (property.PropertyImages != null)
+                                                {
+                                                    var image = property.PropertyImages.FirstOrDefault();
+                                                    <img alt="img" src="@Url.ContentUrl(image)">
+                                                }
+                                                else
+                                                {
+                                                    <img alt="img" src="/img/item/1.jpg">
+                                                }
+
+                                            </a>
+                                            <div class="aa-tag @property.PropertyStatus">
+                                                @PropertyStatusHelper.GetPropertyStatusText(@property.PropertyStatus)
+                                            </div>
+                                            <div class="aa-properties-item-content">
+                                                <div class="aa-properties-info">
+
+                                                    @if (property.PropertyNumberOfRooms > 0)
+                                                    {
+                                                        <span>@property.PropertyNumberOfRooms Rooms</span>
+                                                    }
+
+                                                    @if (property.PropertyNumberOfBeds > 0)
+                                                    {
+                                                        <span>@property.PropertyNumberOfBeds Beds</span>
+                                                    }
+
+                                                    @if (property.PropertyNumberOfBaths > 0)
+                                                    {
+                                                        <span>@property.PropertyNumberOfBaths Baths</span>
+                                                    }
+
+                                                    @if (property.PropertySize > 0)
+                                                    {
+                                                        <span>@property.PropertySize SQ FT</span>
+                                                    }
+
+                                                </div>
+                                                <div class="aa-properties-about">
+                                                    <h3><a href="@Url.ContentUrl(property.ContentLink)">@property.MetaTitle</a></h3>
+                                                    @Html.PropertyFor(m => property.PropertyDescription)
+                                                </div>
+                                                <div class="aa-properties-detial">
+                                                    <span class="aa-price">
+                                                        @Html.DisplayFor(m => property.PropertyPrice, "PropertyPrice")
+                                                    </span>
+                                                    <a class="aa-secondary-btn" href="@Url.ContentUrl(property.ContentLink)">View Details</a>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </li>
+                                }
+
+
+
+                            </ul>
+                        </div>
+                        <!-- Start properties content bottom -->
+                        <div class="aa-properties-content-bottom">
+                            <nav>
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li class="active"><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    }
+
+                </div>
+
+                <div data-epi-edit="false">
+                    @Html.PropertyFor(m => m.CurrentPage.Sections, new { data_epi_edit = "false" })
+                </div>
+
+            </div>
+            <!-- Start properties sidebar -->
+            <div class="col-md-4">
+                @if (Model.CurrentPage.PropertiesSideBar != null)
+                {
+                    @Html.PropertyFor(m => m.CurrentPage.PropertiesSideBar)
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- / Properties  -->
