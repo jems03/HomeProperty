@@ -214,6 +214,7 @@ namespace HomeProperty.Business.Initialization.Jobs.PropertiesImport
             }
 
             propertiesDetailPage.Name = propertiesDTO.PropertyName;
+            propertiesDetailPage.MetaTitle = propertiesDTO.PropertyName;
             propertiesDetailPage.PropertyPrice = propertiesDTO.PropertyPrice;
             propertiesDetailPage.PropertyDescription = new XhtmlString($"<p>{propertiesDTO.PropertyDescription}</p>");
             propertiesDetailPage.PropertyNumberOfRooms = propertiesDTO.PropertyNumberOfRooms;
