@@ -53,7 +53,7 @@
 
     @{
         await Html.RenderPartialAsync("Header", Model);
-        @RenderBody()
+                        @RenderBody()
         await Html.RenderPartialAsync("Footer", Model);
     }
    
@@ -73,6 +73,42 @@
     <script type="text/javascript" src="/js/jquery.fancybox.pack.js"></script>
     <!-- Custom js -->
     <script src="/js/custom.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let itemsPerPage = $('#itemsPerPage');
+            let propertyList = $('#propertyList');
+            let propertyListItem = propertyList.children('li').toArray(); // Convert to array
+            console.log(propertyListItem);
+
+            $('#sortProperty').on('change', function () {
+                const sortValue = $(this).val();
+                console.log(`Sorting by: ${sortValue}`);
+
+                // Sort the property list based on the selected sort value
+                propertyListItem.sort((a, b) => {
+                    const propertyA = $(a).data(sortValue);
+                    const propertyB = $(b).data(sortValue);
+
+                    // Numeric or date-based sorting
+                    if (sortValue === 'price' || sortValue === 'date') {
+                        return propertyA > propertyB ? 1 : -1;
+                    }
+
+                    // Alphabetical sorting for other values
+                    return propertyA.localeCompare(propertyB);
+                });
+
+                console.log('propertyListItem:', propertyListItem);
+
+                $.each(propertyListItem, function (idx, item) {
+                    propertyList.append(item);
+                });
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>
